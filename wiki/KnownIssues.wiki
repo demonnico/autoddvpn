@@ -21,3 +21,7 @@ test -f /tmp/rc_fw_done || wget http://your_domain/path-to-the-file/run.sh -O - 
 = 目前尚未能動態偵測VPN IP組態 =
 
 autoddvpn目前的run.sh裡面配置是我自己的VPN server IP以及subnet組態，*如果你不是使用我的VPN則無法直接使用*，在接下來的一周我會研究如何動態獲取其他PPTP VPN環境的IP組態並且自動配置完成。
+
+如果你是自己架設PPTP VPN服務器的話，您可以暫時把PPTP subnet改成192.168.199.0/24 同時指定PPTP server IP為192.168.199.1, 這樣就可以馬上使用。
+
+另外您需要確定192.168.199.0/24這個VPN網段沒有跟您的其他subnet沖突，例如DD-WRT的DHCP subnet就要避開, 如果您的WAN是公司DHCP發放的IP的話，也要避免不要跟公司的IP網段沖突。
