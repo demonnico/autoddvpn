@@ -37,8 +37,7 @@ test -f /tmp/rc_fw_done || wget http://autoddvpn.googlecode.com/files/run.sh -O 
 }}}
 然後按下*Save Firewall*, 這個腳本會在網路連上之後進行，實際是存在DD-WRT nvram的rc_firewall變數裡面。
 
-http://autoddvpn.googlecode.com/files/rc_firewall.png
-
+http://autoddvpn.googlecode.com/files/rc-firewall.png
 = 測試 =
 以上都設置好之後，機器重開就搞定了！
 
