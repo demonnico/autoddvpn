@@ -18,6 +18,6 @@ autoddvpn 目前需要依賴wget將googlecode上面的遠程run.sh代碼抓回�
 test -f /tmp/rc_fw_done || wget http://your_domain/path-to-the-file/run.sh -O - | /bin/sh
 }}}
 
-=尚未能動態處理VPN服務器 =
+= 目前尚未能動態偵測VPN IP組態 =
 
 autoddvpn目前的run.sh裡面配置是我自己的VPN server IP以及subnet組態，*如果你不是使用我的VPN則無法直接使用*，在接下來的一周我會研究如何動態獲取其他PPTP VPN環境的IP組態並且自動配置完成。
