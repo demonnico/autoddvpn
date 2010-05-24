@@ -8,14 +8,14 @@ autoddvpn 目前需要依賴wget將googlecode上面的遠程run.sh代碼抓回�
 
 也正因為目前依賴googlecode的遠程腳本，萬一googlecode被GFW的話就比較麻煩了，但是用戶可以把這三個腳本放到自己的web服務器：
 
-  * go.sh
-  * up.sh
-  * down.sh (實際不需要用到)
+  * run.sh
+  * vpnup.sh
+  * vpndown.sh (實際不需要用到)
 
-修改 go.sh
+修改 run.sh
 
 {{{
-DLDIR='http://autoddvpn.googlecode.com/files/'
+DLDIR='http://autoddvpn.googlecode.com/svn/trunk/'
 }}}
 
 改成自己web空間對應的目錄，例如
@@ -26,5 +26,5 @@ DLDIR='http://your_domain/path-to-the-file/'
 然後修改rc_firewall成這樣即可：
 
 {{{
-test -f /tmp/rc_fw_done || wget http://your_domain/path-to-the-file/go.sh -O - | /bin/sh
+test -f /tmp/rc_fw_done || wget http://your_domain/path-to-the-file/run.sh -O - | /bin/sh
 }}}
