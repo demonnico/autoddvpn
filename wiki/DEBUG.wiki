@@ -1,0 +1,37 @@
+= Introduction =
+
+如何debug系統autoddvpn的運作狀態？
+
+= Details =
+您需要ssh進入DD-WRT， 並且查看/tmp/autoddvpn.log， 內容如下：
+
+{{{
+root@DD-WRT:/tmp# tail -f autoddvpn.log 
+[DEBUG] failed to get PPTPDEV, retry in 3 seconds
+[DEBUG] failed to get PPTPDEV, retry in 3 seconds
+[DEBUG] failed to get PPTPDEV, retry in 3 seconds
+[DEBUG] failed to get PPTPDEV, retry in 3 seconds
+[DEBUG] failed to get PPTPDEV, retry in 3 seconds
+[DEBUG] failed to get PPTPDEV, retry in 3 seconds
+[DEBUG] failed to get PPTPDEV, retry in 3 seconds
+[DEBUG] failed to get PPTPDEV, retry in 3 seconds
+[DEBUG] failed to get PPTPDEV, retry in 3 seconds
+[DEBUG] failed to get PPTPDEV, retry in 3 seconds
+[DEBUG] failed to get PPTPDEV, retry in 3 seconds
+[DEBUG] failed to get PPTPDEV, retry in 3 seconds
+[DEBUG] failed to get PPTPDEV, retry in 3 seconds
+[DEBUG] failed to get PPTPDEV, retry in 3 seconds
+[INFO] got PPTPDEV as ppp0, set into nvram
+[INFO] got PPTPGW as 192.168.199.1 , set into nvram
+[INFO] VPN is UP, trying to modify the routing table
+[INFO] delete default gw 192.168.172.254
+[INFO] add default gw 192.168.199.1 
+[INFO] adding the static routes, this may teke a while.
+[INFO] final check the default gw
+[DEBUG] my current gw is 192.168.199.1
+[INFO] static routes added
+[DEBUG] return 0
+[DEBUG] break
+}}}
+
+或者也可以在DD-WRT的web管理界面的命令輸入框打 * cat /tmp/autoddvpn.log * 然後按下Run Command, 也會傳回LOG記錄。
