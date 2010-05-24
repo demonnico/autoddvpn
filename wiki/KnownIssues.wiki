@@ -12,6 +12,17 @@ autoddvpn 目前需要依賴wget將googlecode上面的遠程run.sh代碼抓回�
   * up.sh
   * down.sh (實際不需要用到)
 
+修改 go.sh
+
+{{{
+DLDIR='http://autoddvpn.googlecode.com/files/'
+}}}
+
+改成自己web空間對應的目錄，例如
+{{{
+DLDIR='http://your_domain/path-to-the-file/'
+}}}
+
 然後修改rc_firewall成這樣即可：
 
 {{{
