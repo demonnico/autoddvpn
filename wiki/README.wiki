@@ -21,6 +21,7 @@ DD-WRT使用dnsmasq來做簡易的name cache服務，因為dnsmasq只會forward�
 http://autoddvpn.googlecode.com/files/dns-config.png
 
 這樣的設置的優缺點是：
+
 *優點*
   # 完全不會有DNS劫持問題
 
@@ -42,6 +43,4 @@ http://autoddvpn.googlecode.com/files/rc_firewall.png
 以上都設置好之後，機器重開就搞定了！
 
 *待續
-
-
 
