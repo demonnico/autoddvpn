@@ -1,0 +1,21 @@
+= Introduction =
+
+這個頁面說明autoddvpn目前的已知問題還有缺點
+
+= 使用遠程腳本 =
+
+autoddvpn 目前需要依賴wget將googlecode上面的遠程run.sh代碼抓回來，然後動態執行代碼裡面的內容，這是因為DD-WRT的nvram裡面沒辦法存放太大的shell script, 因此只能用這個辦法，如果你的DD-WRT可以支持/jffs並且可以掛載USB裝置的話，就可以完全不需要遠程執行script了，日後我們也會放出支持/jffs的本地操作方式。
+
+也正因為目前依賴googlecode的遠程腳本，萬一googlecode被GFW的話就比較麻煩了，但是用戶可以把這三個腳本放到自己的web服務器：
+
+  * run.sh
+  * vpnup.sh
+  * vpndown.sh (實際不需要用到)
+
+然後修改rc_firewall成這樣即可：
+
+{{{
+test -f /tmp/rc_fw_done || wget http://your_domain/path-to-the-file/run.sh -O - | /bin/sh
+}}}
+
+
