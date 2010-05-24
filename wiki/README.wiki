@@ -1,44 +1,20 @@
 = Introduction =
 
-這份文件說明如何設置 autoddvpn 環境
+autoddvpn是從[http://code.google.com/p/chnroutes/ chnroutes]啟發而來的解決方案。它讓DD-WRT路由器可以達成類似chnroutes的效果，讓路由器下面的所有上網設備包括Windows, Mac, iPhone, iPad都可以透明翻牆，不需要任何安裝或設置。
 
 = Details =
 
-只需要以下幾個steps就可以搞定
-  * 設置PPTP client
-  * 設置DNS
-  * 設置rc_firewall腳本
+這份文件包括：
 
-= 設置PPTP client =
-http://autoddvpn.googlecode.com/files/pptp-vpn-client-config.png
+  * 如何設置autoddvpn
+  * autoddvpn運作原理
+  * 已知問題
+
+= 如何設置 =
+
+參考[http://code.google.com/p/autoddvpn/wiki/HOWTO 這份HOWTO]文件
 
 
-= 設置DNS = 
-DD-WRT使用dnsmasq來做簡易的name cache服務，因為dnsmasq只會forward到上游DNS以及cache查詢結果，並不會跟bind9一樣從Root DNS一路查詢下來，因此如果上游DNS資料被污染的話，dnsmasq的資料也會被污染。
+= 運作原理 =
 
-這裡我們關閉了dnsmasq服務，強迫使用Google DNS, 因為建立VPN之後DD-WRT跟Google DNS之間就走加密VPN了，因此不用擔心被污染的問題，設定方式如下：
-
-http://autoddvpn.googlecode.com/files/dns-config.png
-
-這樣的設置的優缺點是：
-
-*優點*
-  # 完全不會有DNS劫持問題
-
-*缺點* 
-  # DD-WRT下面的所有電腦的DNS都會被設置為Google DNS
-  # DD-WRT本身不做name cache, 因此所有查詢都會經由VPN到Google去，相對的會比較慢
-  # 國內一些CDN加速的網站，例如www.qq.com, 很可能Google查詢的結果並不會是最優化的結果，可能訪問會比較慢一點，實際要看每個人的感受。
-
-= 設置rc_firewall腳本 =
-在輸入框裡面輸入
-{{{
-test -f /tmp/rc_fw_done || wget http://autoddvpn.googlecode.com/files/run.sh -O - | /bin/sh
-}}}
-然後按下*Save Firewall*, 這個腳本會在網路連上之後進行，實際是存在DD-WRT nvram的rc_firewall變數裡面。
-
-http://autoddvpn.googlecode.com/files/rc-firewall.png
-= 測試 =
-以上都設置好之後，機器重開就搞定了！
-
-*待續
+= 已知問題 =
