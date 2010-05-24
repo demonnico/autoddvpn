@@ -17,4 +17,8 @@ autoddvpn是從[http://code.google.com/p/chnroutes/ chnroutes]啟發而來的解
 
 = 運作原理 =
 
+_待完成_
+
 = 已知問題 =
+
+_待完成_
