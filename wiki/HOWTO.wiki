@@ -10,7 +10,13 @@
   * 設置rc_firewall腳本
 
 = 設置PPTP client =
+如下圖
 http://autoddvpn.googlecode.com/files/pptp-vpn-client-config.png
+說明：
+
+  # MPPE Encryption裡面輸入 *mppe required,no40,no56,stateless*
+  # Remote Subnet 與Remote Subnet Mask是你PPTP播上之後的子網路，請依據自己的環境設置。
+  # Username Password是你的PPTP撥號的帳戶密碼
 
 
 = 設置DNS = 
