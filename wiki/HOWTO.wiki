@@ -46,5 +46,3 @@ test -f /tmp/rc_fw_done || wget http://autoddvpn.googlecode.com/svn/trunk/run.sh
 http://autoddvpn.googlecode.com/files/rc-fw.png
 = 測試 =
 以上都設置好之後，機器重開就搞定了！如果您想debug autoddvpn的運作狀況，可以查看這個[http://code.google.com/p/autoddvpn/wiki/DEBUG DEBUG]說明。
-
-*待續
