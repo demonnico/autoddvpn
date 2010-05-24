@@ -12,7 +12,7 @@ autoddvpn是從[http://code.google.com/p/chnroutes/ chnroutes]啟發而來的解
 
 = 如何設置 =
 
-參考[http://code.google.com/p/autoddvpn/wiki/HOWTO 這份HOWTO]文件
+參考[http://code.google.com/p/autoddvpn/wiki/HOWTO 這份HOWTO文件]
 
 
 = 運作原理 =
@@ -21,4 +21,4 @@ _待完成_
 
 = 已知問題 =
 
-_待完成_
+參考[http://code.google.com/p/autoddvpn/wiki/KnownIssues 這份文件]
