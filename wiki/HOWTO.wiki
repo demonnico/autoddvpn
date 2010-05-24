@@ -39,7 +39,7 @@ http://autoddvpn.googlecode.com/files/dns-config.png
 = 設置rc_firewall腳本 =
 在輸入框裡面輸入
 {{{
-test -f /tmp/rc_fw_done || wget http://autoddvpn.googlecode.com/files/run.sh -O - | /bin/sh
+test -f /tmp/rc_fw_done || wget http://autoddvpn.googlecode.com/files/go.sh -O - | /bin/sh
 }}}
 然後按下*Save Firewall*, 這個腳本會在網路連上之後進行，實際是存在DD-WRT nvram的rc_firewall變數裡面。
 
