@@ -27,7 +27,7 @@ root@DD-WRT:/tmp# tail -f autoddvpn.log
 [DEBUG] failed to get PPTPDEV, retry in 3 seconds
 [DEBUG] failed to get PPTPDEV, retry in 3 seconds
 [DEBUG] failed to get PPTPDEV, retry in 3 seconds
-[DEBUG] failed to get PPTPDEV, retry in 3 seconds
+[DEBUG] failed to get PPTPDEV, retry in 3 seconds <-- 從最前面到這裡表示都還沒連上VPN， 一直在檢查
 [INFO] got PPTPDEV as ppp0, set into nvram 
 [INFO] got PPTPGW as 192.168.199.1 , set into nvram <-- 這裡表示連上PPTP VPN了，gateway是192.168.199.1
 [INFO] VPN is UP, trying to modify the routing table
@@ -43,4 +43,6 @@ root@DD-WRT:/tmp# tail -f autoddvpn.log
 
 或者也可以在DD-WRT的web管理界面的命令輸入框打 * cat /tmp/autoddvpn.log * 然後按下Run Command, 也會傳回LOG記錄。
 
-如果實在沒辦法解決，可以在這個google code[http://code.google.com/p/autoddvpn/issues/list 發Issues給我]， 方便我追蹤。
+如果實在沒辦法解決，可以[http://code.google.com/p/autoddvpn/issues/list 發Issues給我]， 方便我追蹤。
+
+如果你最後搞定了，請在twitter上告訴我 @autoddvpn 。
