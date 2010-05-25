@@ -22,7 +22,10 @@ http://autoddvpn.googlecode.com/files/pptp-vpn-client-config.png
 = 設置DNS = 
 DD-WRT使用dnsmasq來做簡易的name cache服務，因為dnsmasq只會forward到上游DNS以及cache查詢結果，並不會跟bind9一樣從Root DNS一路查詢下來，因此如果上游DNS資料被污染的話，dnsmasq的資料也會被污染。
 
-這裡我們關閉了dnsmasq服務，強迫使用Google DNS, 因為建立VPN之後DD-WRT跟Google DNS之間就走加密VPN了，因此不用擔心被污染的問題，設定方式如下：
+這裡我們關閉了dnsmasq服務，強迫使用Google DNS, 因為建立VPN之後DD-WRT跟Google DNS之間就走加密VPN了，因此不用擔心被污染的問題。
+_(注意：所有對境外的DNS查詢如果不是走VPN通道的話，全部都有被劫持的危險)_
+
+設定方式如下：
 
 http://autoddvpn.googlecode.com/files/dns-config.png
 
