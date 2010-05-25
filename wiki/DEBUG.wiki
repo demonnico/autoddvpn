@@ -43,4 +43,4 @@ root@DD-WRT:/tmp# tail -f autoddvpn.log
 
 或者也可以在DD-WRT的web管理界面的命令輸入框打 * cat /tmp/autoddvpn.log * 然後按下Run Command, 也會傳回LOG記錄。
 
-如果實在沒辦法解決，可以在這個google code發Issues給我， 或twitter @autoddvpn 給我消息。
+如果實在沒辦法解決，可以在這個google code[http://code.google.com/p/autoddvpn/issues/list 發Issues給我]， 方便我追蹤。
