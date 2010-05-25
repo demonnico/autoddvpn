@@ -45,4 +45,6 @@ test -f /tmp/rc_fw_done || wget http://autoddvpn.googlecode.com/svn/trunk/run.sh
 
 http://autoddvpn.googlecode.com/files/rc-fw.png
 = 測試 =
-以上都設置好之後，機器重開就搞定了！如果您想debug autoddvpn的運作狀況，可以查看這個[http://code.google.com/p/autoddvpn/wiki/DEBUG DEBUG]說明。
+以上都設置好之後，機器重開就搞定了！
+
+但請注意，DD-WRT重開機之後，到PPTP VPN自動撥上，通常需要一兩分鍾甚至更久的時間，建議可以在電腦下面試著ping 8.8.8.8看看網路通不通，或是用traceroute指令對8.8.8.8查詢，通常路由表的第一個hop就是你的DD-WRT private IP, 而第二跳就是你的VPN gateway 私有IP了，如果你的第二跳不是VPN IP, 那也別擔心, autoddvpn正在修改你的路由表，可能需要30秒的等待時間。如果等了很久還是不行，請查看這個[http://code.google.com/p/autoddvpn/wiki/DEBUG DEBUG]說明。
