@@ -15,7 +15,7 @@ http://autoddvpn.googlecode.com/files/pptp-vpn-client-config.png
 說明：
 
   # MPPE Encryption裡面輸入 *mppe required,no40,no56,stateless*
-  # Remote Subnet 與Remote Subnet Mask是你PPTP播上之後的子網路，請依據自己的環境設置。*(注意：這兩個參數不用設定也是可以播上PPTP, 但是目前autoddvpn需要依靠pptpd_client_srvsub這個nvram變數才有辦法正確判斷是否連上VPN以及進行一連串後續動作，在這個部分優化之前，仍請設置這兩個參數)*
+  # Remote Subnet 與Remote Subnet Mask是你PPTP播上之後的子網路，請依據自己的環境設置。_(注意：這兩個參數不用設定也是可以播上PPTP, 但是目前autoddvpn需要依靠pptpd_client_srvsub這個nvram變數才有辦法正確判斷是否連上VPN以及進行一連串後續動作，在這個部分優化之前，仍請設置這兩個參數)_
   # Username Password是你的PPTP撥號的帳戶密碼
 
 
