@@ -11,7 +11,9 @@
 
 = 設置PPTP client =
 如下圖
+
 http://autoddvpn.googlecode.com/files/pptp-vpn-client-config.png
+
 說明：
 
   # MPPE Encryption裡面輸入 *mppe required,no40,no56,stateless*
