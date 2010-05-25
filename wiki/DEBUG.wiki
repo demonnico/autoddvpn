@@ -2,7 +2,14 @@
 
 如何debug系統autoddvpn的運作狀態？
 
-= Details =
+= 注意 =
+
+  * DD-WRT重開機之後，通常需要1-2分鍾播上PPTP VPN, 實際播上去的速度視情況而定，所以別急著重開機就馬上上網。
+  * 重開機完成1-2分鍾後，您可以在電腦測試 *traceroute 8.8.8.8* 看看返回結果，通常第一個hop就是你的DD-WRT private IP, 而第二個hop就是VPN gateway IP, 如果你的第二個hop很明顯不是VPN IP, 那表示autoddvpn正在修改您的路由表，請再稍後30-60sec即可。
+  * 如果等了很久，traceroute指令的第二hop還是你的public gateway, 那可能你的PPTP一直連補上去，你可以查看一下log, 方法如下。
+
+
+= 如何查看log =
 您需要ssh進入DD-WRT， 並且查看/tmp/autoddvpn.log， 內容如下：
 
 {{{
@@ -21,17 +28,19 @@ root@DD-WRT:/tmp# tail -f autoddvpn.log
 [DEBUG] failed to get PPTPDEV, retry in 3 seconds
 [DEBUG] failed to get PPTPDEV, retry in 3 seconds
 [DEBUG] failed to get PPTPDEV, retry in 3 seconds
-[INFO] got PPTPDEV as ppp0, set into nvram
-[INFO] got PPTPGW as 192.168.199.1 , set into nvram
+[INFO] got PPTPDEV as ppp0, set into nvram 
+[INFO] got PPTPGW as 192.168.199.1 , set into nvram <-- 這裡表示連上PPTP VPN了，gateway是192.168.199.1
 [INFO] VPN is UP, trying to modify the routing table
-[INFO] delete default gw 192.168.172.254
-[INFO] add default gw 192.168.199.1 
-[INFO] adding the static routes, this may teke a while.
-[INFO] final check the default gw
-[DEBUG] my current gw is 192.168.199.1
+[INFO] delete default gw 192.168.172.254 <--這裡表示刪除你原本的預設網關
+[INFO] add default gw 192.168.199.1   <-- 設定VPN為預設網關
+[INFO] adding the static routes, this may teke a while. <--開始加入所有國內網段，這裡可能需要30sec
+[INFO] final check the default gw <-- 最後再檢查一次
+[DEBUG] my current gw is 192.168.199.1 <-- 如果這裡是VPN網關就沒問題了
 [INFO] static routes added
 [DEBUG] return 0
 [DEBUG] break
 }}}
 
 或者也可以在DD-WRT的web管理界面的命令輸入框打 * cat /tmp/autoddvpn.log * 然後按下Run Command, 也會傳回LOG記錄。
+
+如果實在沒辦法解決，可以在這個google code發Issues給我， 或twitter @autoddvpn 給我消息。
