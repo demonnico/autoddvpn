@@ -28,3 +28,8 @@ DLDIR='http://your_domain/path-to-the-file/'
 {{{
 test -f /tmp/rc_fw_done || wget http://your_domain/path-to-the-file/run.sh -O - | /bin/sh
 }}}
+
+
+= 搭配P2P大量使用的時候會造成VPN斷線 =
+
+其實任何沒有適當分配帶寬的P2P應用都有可能會造成網路的不穩定。實際測試發現，如果跑p2p但是路由器但是沒有做好QoS或是適當的限速，這樣會造成網路掉包，最後PPTP反復斷線又重連，這會造成斷線期間無法連到國外的情況。所以目前建議如果要使用P2P應用的話不要火力全開，以免造成VPN不穩定。
