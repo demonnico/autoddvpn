@@ -1,6 +1,6 @@
 = Introduction =
 
-這份文件說明如何不遠程執行run.sh而是運行local的腳本達成autoddvpn效果, 您需要操作基本的SSH指令來完成部分工作，這份文件適合了解Linux SSH登入DD-WRT的使用者。
+這份文件說明如何不遠程執行run.sh而是運行local的腳本達成autoddvpn效果, 您需要操作基本的SSH指令來完成部分工作，這份文件適合能夠SSH登入DD-WRT的進階使用者。
 
 = 背景 =
 
