@@ -28,6 +28,8 @@ autoddvpn預設是運行遠程的run.sh腳本達成翻牆的效果，如果你�
 $ cd /jffs/
 $ wget http://autoddvpn.googlecode.com/svn/trunk/runlocal.sh
 $ wget http://autoddvpn.googlecode.com/svn/trunk/vpnup.sh
+$ chmod a+x runlocal.sh
+$ chmod a+x vpnup.sh
 }}}
   # 接著編輯rc_firewall指令，輸入一行
 {{{
