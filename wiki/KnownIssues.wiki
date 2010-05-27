@@ -36,18 +36,26 @@ test -f /tmp/rc_fw_done || wget http://your_domain/path-to-the-file/run.sh -O - 
 
 您可以在使用P2P的同時一直ping 8.8.8.8, 如果出現經常性的掉包就表示品質已經很不穩定了。
 
-好的VPN品質大約持續維持在200-300ms左右
+好的VPN品質大約持續維持在200-300ms左右，並且不掉包
 
 {{{
-$ ping 8.8.8.8
+macbook:~ macbook$ ping 8.8.8.8
 PING 8.8.8.8 (8.8.8.8): 56 data bytes
-64 bytes from 8.8.8.8: icmp_seq=0 ttl=55 time=235.885 ms
-64 bytes from 8.8.8.8: icmp_seq=1 ttl=55 time=208.969 ms
-64 bytes from 8.8.8.8: icmp_seq=2 ttl=55 time=207.642 ms
-64 bytes from 8.8.8.8: icmp_seq=3 ttl=55 time=256.942 ms
-64 bytes from 8.8.8.8: icmp_seq=4 ttl=55 time=203.922 ms
-64 bytes from 8.8.8.8: icmp_seq=5 ttl=55 time=205.285 ms
-64 bytes from 8.8.8.8: icmp_seq=6 ttl=55 time=200.603 ms
-64 bytes from 8.8.8.8: icmp_seq=7 ttl=55 time=323.149 ms
-64 bytes from 8.8.8.8: icmp_seq=8 ttl=55 time=202.867 ms
+64 bytes from 8.8.8.8: icmp_seq=0 ttl=55 time=240.326 ms
+64 bytes from 8.8.8.8: icmp_seq=1 ttl=55 time=198.588 ms
+64 bytes from 8.8.8.8: icmp_seq=2 ttl=55 time=197.643 ms
+64 bytes from 8.8.8.8: icmp_seq=3 ttl=55 time=231.719 ms
+64 bytes from 8.8.8.8: icmp_seq=4 ttl=55 time=203.183 ms
+64 bytes from 8.8.8.8: icmp_seq=5 ttl=55 time=237.717 ms
+64 bytes from 8.8.8.8: icmp_seq=6 ttl=55 time=211.087 ms
+64 bytes from 8.8.8.8: icmp_seq=7 ttl=55 time=205.846 ms
+64 bytes from 8.8.8.8: icmp_seq=8 ttl=55 time=204.162 ms
+64 bytes from 8.8.8.8: icmp_seq=9 ttl=55 time=200.667 ms
+64 bytes from 8.8.8.8: icmp_seq=10 ttl=55 time=206.977 ms
+64 bytes from 8.8.8.8: icmp_seq=11 ttl=55 time=199.268 ms
+64 bytes from 8.8.8.8: icmp_seq=12 ttl=55 time=322.939 ms
+64 bytes from 8.8.8.8: icmp_seq=13 ttl=55 time=221.255 ms
+64 bytes from 8.8.8.8: icmp_seq=14 ttl=55 time=199.690 ms
+64 bytes from 8.8.8.8: icmp_seq=15 ttl=55 time=213.775 ms
+64 bytes from 8.8.8.8: icmp_seq=16 ttl=55 time=203.666 ms
 }}}
