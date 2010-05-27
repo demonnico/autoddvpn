@@ -14,7 +14,7 @@ autoddvpn預設是運行遠程的run.sh腳本達成翻牆的效果，如果你�
 
 = 條件 =
 
-  # 你的DD-WRT需要支持USB設備, 並且mount到/jffs
+  # 你的DD-WRT需要支持USB設備, 並且mount到/jffs成可讀寫
 
 = 操作方式=
 
