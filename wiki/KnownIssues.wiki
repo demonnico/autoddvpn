@@ -59,3 +59,5 @@ PING 8.8.8.8 (8.8.8.8): 56 data bytes
 64 bytes from 8.8.8.8: icmp_seq=15 ttl=55 time=213.775 ms
 64 bytes from 8.8.8.8: icmp_seq=16 ttl=55 time=203.666 ms
 }}}
+
+== 更多autoddvpn與p2p所有相關的議題，請看[http://code.google.com/p/autoddvpn/wiki/AboutP2P 這裡]。 ==
