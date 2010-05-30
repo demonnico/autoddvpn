@@ -6,7 +6,7 @@
 
 = 如果跑p2p會對VPN server壓力很大嗎？ =
 
-這部分我持保留態度，基本上一個PPTP通道如果有太多session，可能PPTP連線就會斷了，或者PPTP tunnel本身就沒辦法承受太多的session, 所以在VPN server負擔不了之前，可能PPTP連線就先斷了。
+這部分我持保留態度，基本上一個PPTP通道如果有太多session，可能PPTP連線就會斷了，或者PPTP tunnel本身就沒辦法承受太多的session, 所以在VPN server負擔不了之前，可能PPTP連線就先斷了，我相信即使OpenVPN也會面臨同樣的問題。
 
 然而，一旦PPTP連線斷了，所有連往國外的連線會沒有可用的gateway, 這時如果使用原本的wan gateway的話會立刻有DNS劫持與污染的危險，因此搭配使用p2p只會讓你的ddwrt變得更不穩定，翻牆的效能也變得更差。
 
