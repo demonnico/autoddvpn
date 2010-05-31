@@ -7,7 +7,7 @@
 相對於穩定版本，autoddvpn同時也提供開發版本，用來解決一些大家回報的問題。
 
 = 20100531 =
-  == ChangeLog ==
+  == 主要更新 ==
   # 解決 buffalo WHR-HP-G300N 搭配 DD-WRT v24-sp2 (04/23/10) std - build 14311無法正常使用問題
   # 解決部分情況無法產生/tmp/autoddvpn.log問題, 並且開始提供更詳盡的LOG記錄
   # 解決rc_firewall可能會多個process並行造成混亂的問題
