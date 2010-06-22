@@ -45,10 +45,21 @@ http://autoddvpn.googlecode.com/files/dns-config.png
 = 設置rc_firewall腳本 =
 在輸入框裡面輸入
 {{{
-test -f /tmp/rc_fw_done || ( echo $$ >> /tmp/rc_fw_done; test $$ -eq $(head -n1 /tmp/rc_fw_done) && cd /tmp; sleep 30; wget http://autoddvpn.googlecode.com/svn/trunk/run.sh -O /tmp/run.sh && /bin/sh run.sh )}}}
+test -f /tmp/rc_fw_done || ( echo $$ >> /tmp/rc_fw_done; test $$ -eq $(head -n1 /tmp/rc_fw_done) && cd /tmp; sleep 30; wget http://autoddvpn.googlecode.com/svn/trunk/run.sh -O /tmp/run.sh && /bin/sh run.sh )
+}}}
 然後按下*Save Firewall*, 這個腳本會在網路連上之後進行，實際是存在DD-WRT nvram的rc_firewall變數裡面。
 
 http://autoddvpn.googlecode.com/files/rc-fw.png
+
+= 設置CRON自我修復腳本 =
+從2010.6.22開始，autoddvpn開始提供自動修復監測腳本，提供更高的可靠性，請在
+*Administration->Management*裡面找到CRON, 選則 *Enable*, 然後再下面輸入框輸入
+{{{
+* * * * * root /bin/sh /tmp/check.sh >> /tmp/last_check.log
+}}}
+然後點最下面*Save* and *Apply*
+
+
 = 測試 =
 以上都設置好之後，機器重開就搞定了！
 
