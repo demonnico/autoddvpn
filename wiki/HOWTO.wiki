@@ -8,6 +8,8 @@
   * 設置PPTP client
   * 設置DNS
   * 設置rc_firewall腳本
+  * 設置CRON自動修復功能
+
 
 = 設置PPTP client =
 如下圖
@@ -51,7 +53,7 @@ test -f /tmp/rc_fw_done || ( echo $$ >> /tmp/rc_fw_done; test $$ -eq $(head -n1 
 
 http://autoddvpn.googlecode.com/files/rc-fw.png
 
-= 設置CRON自我修復腳本 =
+= 設置CRON自動修復功能 =
 從2010.6.22開始，autoddvpn開始提供自動修復監測腳本，提供更高的可靠性，請在
 *Administration->Management* 裡面找到CRON, 選則 *Enable*, 然後再下面輸入框輸入
 {{{
