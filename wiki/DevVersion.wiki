@@ -4,19 +4,15 @@
 
 = About =
 
-相對於穩定版本，autoddvpn同時也提供開發版本，用來解決一些大家回報的問題。
+相對於穩定版本，autoddvpn同時也提供開發版本，用來解決一些大家回報的問題，通常已經修正但尚未測試完成的功能都會放在dev版本。
 
-= 20100531 =
-  == 主要更新 ==
-  # 解決 buffalo WHR-HP-G300N 搭配 DD-WRT v24-sp2 (04/23/10) std - build 14311無法正常使用問題
-  # 解決部分情況無法產生/tmp/autoddvpn.log問題, 並且開始提供更詳盡的LOG記錄
-  # 解決rc_firewall可能會多個process並行造成混亂的問題
+
   
   == 使用方式 ==
 rc_firewall遠程腳本改成如下即可：
 
 {{{
-test -f /tmp/rc_fw_done || ( echo $$ >> /tmp/rc_fw_done && cd /tmp; sleep 10;wget http://autoddvpn.googlecode.com/svn/trunk/run-dev.sh -O /tmp/run-dev.sh && /bin/sh run-dev.sh )
+r='run-dev.sh'; test -f /tmp/rc_fw_done || ( echo $$ >> /tmp/rc_fw_done; test $$ -eq $(head -n1 /tmp/rc_fw_done) && cd /tmp; sleep 30; wget http://autoddvpn.googlecode.com/svn/trunk/$r -O /tmp/$r && /bin/sh $r )
 }}}
 
   == 已知問題 ==
