@@ -51,8 +51,6 @@ r='run.sh'; test -f /tmp/rc_fw_done || ( echo $$ >> /tmp/rc_fw_done; test $$ -eq
 }}}
 然後按下*Save Firewall*, 這個腳本會在網路連上之後進行，實際是存在DD-WRT nvram的rc_firewall變數裡面。
 
-http://autoddvpn.googlecode.com/files/rc-fw.png
-
 = 設置CRON自動修復功能 =
 從2010.6.22開始，autoddvpn開始提供自動修復監測腳本，提供更高的可靠性，請在
 *Administration->Management* 裡面找到CRON, 選則 *Enable*, 然後再下面輸入框輸入
