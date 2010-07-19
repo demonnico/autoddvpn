@@ -24,7 +24,21 @@ http://autoddvpn.googlecode.com/files/jffs-1.png
  # 使用了vpn版本
 參考官方說明：http://www.dd-wrt.com/wiki/index.php/Jffs
 
-如果確定有jffs支持的話，可以webgui上面打開，或者ssh進去用指令打開，最後重啟一次：
+webgui啟用jffs的方式要注意順序：
+
+1. 進入Administration.
+2. 下拉，找到 JFFS2 設定
+3.  Enable JFFS.
+4. Click Save.
+5. 等幾秒之後再按 Apply.
+6. 再等幾秒，然後選取Clean JFFS.
+7. 這時不要按"Save", 直接按"Apply"即可
+(這時候router會開始准備jffs空間)
+8. 然後把 "Clean JFFS" 設置關掉。
+9. 按 "Save".
+10. 重開router一次
+
+或者也可以ssh進去用指令打開，最後重啟一次：
 {{{
 nvram set jffs_mounted=1
 nvram set enable_jffs2=1
@@ -88,4 +102,3 @@ default         172.28.1.1      0.0.0.0         UG    0      0        0 ppp0
 }}}
 
 注意最後default gateway就是VPN gateway
-
