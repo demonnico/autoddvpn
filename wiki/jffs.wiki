@@ -26,17 +26,17 @@ http://autoddvpn.googlecode.com/files/jffs-1.png
 
 webgui啟用jffs的方式要注意順序：
 
-1. 進入Administration.
-2. 下拉，找到 JFFS2 設定
-3.  Enable JFFS.
-4. Click Save.
-5. 等幾秒之後再按 Apply.
-6. 再等幾秒，然後選取Clean JFFS.
-7. 這時不要按"Save", 直接按"Apply"即可
-(這時候router會開始准備jffs空間)
-8. 然後把 "Clean JFFS" 設置關掉。
-9. 按 "Save".
-10. 重開router一次
+ # 進入Administration.
+ # 下拉，找到 JFFS2 設定
+ #  Enable JFFS.
+ # Click Save.
+ # 等幾秒之後再按 Apply.
+ # 再等幾秒，然後選取Clean JFFS.
+ # 這時不要按"Save", 直接按"Apply"即可
+ # (這時候router會開始准備jffs空間)
+ # 然後把 "Clean JFFS" 設置關掉。
+ # 按 "Save".
+ # 重開router一次
 
 或者也可以ssh進去用指令打開，最後重啟一次：
 {{{
