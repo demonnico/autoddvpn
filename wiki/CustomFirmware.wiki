@@ -47,6 +47,13 @@ $ mkdir working_directory/rootfs/usr/local/bin
  # http://autoddvpn.googlecode.com/svn/trunk/bin/vpnup.sh
  # http://autoddvpn.googlecode.com/svn/trunk/bin/vpndown.sh
 
+放進去之後記得要全部chmod a+x 處理:
+{{{
+chmod a+x run-dev.sh
+chmod a+x vpnup.sh
+chmod a+x vpndown.sh
+}}}
+
 = 重新打包起來 =
 回到working_directory之上一層, 然後下
 
