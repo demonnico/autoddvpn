@@ -116,6 +116,6 @@ root@DD-WRT:/tmp# cat /tmp/autoddvpn.log
 此時已經修改了 /tmp/pptpd_client/ip-up and /tmp/pptpd_client/ip-down
 這兩個file正是chnroutes主要調整的地方。(再次感謝chnroutes的啟發）
 
-如此一來PPTP連上或斷開就會觸發相應的vpnup.sh and vpndown.sh 於是整個autoddvpn的運作就幾乎跟chnroutes相同了，並且相當可靠，不會有之前回報的bug#11 or bug#12的問題了.
+如此一來PPTP連上或斷開就會觸發相應的vpnup.sh and vpndown.sh 於是整個autoddvpn的運作就幾乎跟chnroutes相同了，並且相當可靠，不會有之前回報的bug#11  bug#12的問題了.
 
 目前看起來相當不錯！
