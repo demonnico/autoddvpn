@@ -99,6 +99,7 @@ nvram commit
 
 重開機之後LOG如下
 
+{{{
 root@DD-WRT:/tmp# cat /tmp/autoddvpn.log 
 [INFO#277] 01/Jan/1970:00:00:15 log starts
 [INFO#277] 01/Jan/1970:00:00:15 modifying /tmp/pptpd_client/ip-up
@@ -110,6 +111,7 @@ root@DD-WRT:/tmp# cat /tmp/autoddvpn.log
 [INFO#277] 01/Jan/1970:00:00:55 modifying /tmp/pptpd_client/ip-down
 [INFO#277] 01/Jan/1970:00:00:55 /tmp/pptpd_client/ip-down modified
 [INFO#277] 01/Jan/1970:00:00:55 ALL DONE. Let's wait for VPN being connected.
+}}}
 
 此時已經修改了 /tmp/pptpd_client/ip-up and /tmp/pptpd_client/ip-down
 這兩個file正是chnroutes主要調整的地方。(再次感謝chnroutes的啟發）
