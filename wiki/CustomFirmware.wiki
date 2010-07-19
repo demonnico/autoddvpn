@@ -59,7 +59,7 @@ $ ./build_firmware.sh output_directory/ working_directory/
 =用自制韌體升級ddwrt =
 這個非常簡單，就到ddwrt的web管理界面直接指定這個新的.bin來升級即可，升級之前建議先用ddwrt web提供的backup功能將你的設置備份出來成 nvrambak.bin
 
-注意，升級.bin韌體的時候，建議 "After flashing, reset to factory defaults" 見下面截屏。這樣可能會比較安全一點。
+注意，升級.bin韌體的時候，建議 "After flashing, reset to default settings" 見下面截屏。這樣可能會比較安全一點。
 
 http://autoddvpn.googlecode.com/files/FlashUpgrade.png
 
