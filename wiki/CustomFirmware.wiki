@@ -101,7 +101,7 @@ nvram commit
 重開機之後LOG如下
 
 {{{
-root@DD-WRT:/tmp# cat /tmp/autoddvpn.log 
+root@DD-WRT:/tmp# tail -f /tmp/autoddvpn.log 
 [INFO#277] 01/Jan/1970:00:00:15 log starts
 [INFO#277] 01/Jan/1970:00:00:15 modifying /tmp/pptpd_client/ip-up
 [INFO#277] 01/Jan/1970:00:00:15 /tmp/pptpd_client/ip-up not exists, sleep 10sec.
