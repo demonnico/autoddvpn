@@ -8,7 +8,7 @@
 
 = Details =
 
-首先你需要找出你的路由器使用哪一個ddwrt韌體，你可以上ddwrt的官方router database查詢下載，或者如果你的路由器剛剛刷好ddwrt的話，就可以直接拿這個韌體來使用。再接下來的過程當作，我們會:
+首先你需要找出你的路由器使用哪一個ddwrt韌體，你可以上ddwrt的官方router database查詢下載，或者如果你的路由器剛剛刷好ddwrt的話，就可以直接拿這個韌體來使用。在接下來的過程當作，我們會:
 
  # 解開ddwrt韌體
  # 放入autoddvpn必要files
