@@ -76,13 +76,14 @@ drwxr-xr-x    3 root     root           30 Jul 18 19:39 ..
 }}}
 
 = 設置rc_startup =
-這個版本開始，設置一律寫在rc_startup, 原本如果已經寫在rc_firewall的請清楚掉。
+這個版本開始，設置一律寫在rc_startup, 原本如果已經寫在rc_firewall的請清除掉。
 
 rc_startup只要一行即可
 
 == /usr/local/bin/run-dev.sh ==
 
 見下面截屏
+
 http://autoddvpn.googlecode.com/files/rc_startup.png
 
 或者也可以ssh進去用nvram指令來下
