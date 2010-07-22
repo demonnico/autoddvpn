@@ -8,8 +8,6 @@
   * 設置PPTP client
   * 設置DNS
   * 設置rc_firewall腳本
-  * 設置CRON自動修復功能
-
 
 = 設置PPTP client =
 如下圖
@@ -50,14 +48,6 @@ http://autoddvpn.googlecode.com/files/dns-config.png
 cd /tmp;wget http://autoddvpn.googlecode.com/svn/trunk/run.sh  && /bin/sh run.sh || touch failed
 }}}
 然後按下*Save Firewall*, 這個腳本會在網路連上之後進行，實際是存在DD-WRT nvram的rc_firewall變數裡面。
-
-= 設置CRON自動修復功能 =
-從2010.6.22開始，autoddvpn開始提供自動修復監測腳本，提供更高的可靠性，請在
-*Administration->Management* 裡面找到CRON, 選則 *Enable*, 然後再下面輸入框輸入
-{{{
-* * * * * root /bin/sh /tmp/check.sh >> /tmp/last_check.log
-}}}
-然後點最下面*Save* and *Apply*
 
 
 = 測試 =
