@@ -4,11 +4,37 @@
 
 = Details =
 
-只需要以下幾個steps就可以搞定
-  * 設置PPTP client
-  * 設置DNS
-  * 設置rc_firewall腳本
-  * 設置CRON自動修復功能
+autoddvpn目前有三種運行模式，各有不同的優缺點，大家可以選擇適合的模式來運行：
+
+  * wget遠程腳本模式
+  * jffs模式
+  * custom firmware自制韌體模式
+
+= wget遠程腳本模式 =
+autoddvpn開機之後，藉由rc_firewall腳本來執行wget取得遠程腳本來運行，這是最早期autoddvpn開發的模式
+
+* 優點：只需要在ddwrt的web界面設定即可，技術門檻最低。
+
+* 缺點：存在一些已知的問題，可能會有不穩定的情況。
+
+= jffs模式 =
+將所需要執行的腳本放入/jffs/可寫入的filesystem裡面，並且定義rc_startup使其一開機就能自動執行
+
+* 優點：同時具備升級的彈性以及執行的獨立性，完全不需要依賴網路就能執行腳本。 *這是目前最推薦的方式*
+
+* 缺點：用戶需要具備ssh以及基本linux操作經驗，每次升級都需要ssh進入ddwrt裡面操作。
+
+= custom firmware自制韌體模式 =
+自己制作具備autoddvpn功能的DDWRT韌體，經由韌體升級之後使其韌體本身就具備autoddvpn功能
+
+ * 優點：非常適合大批同一款路由器的升級，開發人員只要准備好.bin韌體，所有用戶只要透過web來升級韌體即可，對用戶來說是最簡單的方式。
+
+ * 缺點：對開發者來說比較麻煩，每一次腳本升級都需要重新包裝韌體。
+
+
+
+
+== 在選擇使用哪一種模式之前，請先進行下面的基本設置：==
 
 
 = 設置PPTP client =
@@ -44,23 +70,9 @@ http://autoddvpn.googlecode.com/files/dns-config.png
   # DD-WRT本身不做name cache, 因此所有查詢都會經由VPN到Google去，相對的會比較慢
   # 國內一些CDN加速的網站，例如www.qq.com, 很可能Google查詢的結果並不會是最優化的結果，可能訪問會比較慢一點，實際要看每個人的感受。
 
-= 設置rc_firewall腳本 =
-在輸入框裡面輸入
-{{{
-cd /tmp;wget http://autoddvpn.googlecode.com/svn/trunk/run.sh  && /bin/sh run.sh || touch failed
-}}}
-然後按下*Save Firewall*, 這個腳本會在網路連上之後進行，實際是存在DD-WRT nvram的rc_firewall變數裡面。
 
-= 設置CRON自動修復功能 =
-從2010.6.22開始，autoddvpn開始提供自動修復監測腳本，提供更高的可靠性，請在
-*Administration->Management* 裡面找到CRON, 選則 *Enable*, 然後再下面輸入框輸入
-{{{
-* * * * * root /bin/sh /tmp/check.sh >> /tmp/last_check.log
-}}}
-然後點最下面*Save* and *Apply*
+== 接著請選擇三種模式其中一種來操作即可==
 
-
-= 測試 =
-以上都設置好之後，機器重開就搞定了！
-
-但請注意，DD-WRT重開機之後，到PPTP VPN自動撥上，通常需要一兩分鍾甚至更久的時間，建議可以在電腦下面試著ping 8.8.8.8看看網路通不通，或是用traceroute指令對8.8.8.8查詢，通常路由表的第一個hop就是你的DD-WRT private IP, 而第二跳就是你的VPN gateway 私有IP了，如果你的第二跳不是VPN IP, 那也別擔心, autoddvpn正在修改你的路由表，可能需要30秒的等待時間。如果等了很久還是不行，請查看這個[http://code.google.com/p/autoddvpn/wiki/DEBUG DEBUG]說明。
+=== [http://code.google.com/p/autoddvpn/wiki/WgetMode wget模式]===
+=== [http://code.google.com/p/autoddvpn/wiki/jffs jffs模式] ===
+=== [http://code.google.com/p/autoddvpn/wiki/CustomFirmware custom firmware自制韌體模式]  ===
