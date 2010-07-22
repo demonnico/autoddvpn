@@ -6,9 +6,9 @@
 
 autoddvpn目前有三種運行模式，各有不同的優缺點，大家可以選擇適合的模式來運行：
 
-  * wget遠程腳本模式
-  * jffs模式
-  * custom firmware自制韌體模式
+== wget遠程腳本模式 ==
+== jffs模式 ==
+== custom firmware自制韌體模式 ==
 
 = wget遠程腳本模式 =
 autoddvpn開機之後，藉由rc_firewall腳本來執行wget取得遠程腳本來運行，這是最早期autoddvpn開發的模式
