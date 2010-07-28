@@ -34,7 +34,7 @@ http://autoddvpn.googlecode.com/files/openvpn-setup.png
 您需要參考[http://code.google.com/p/autoddvpn/wiki/jffs 這份文件]裡面關於JFFS設置的說明來啟用JFFS支持，注意，只需要參考該文件來打開JFFS支持即可。
 
 
-= 如何放置腳本到jffs =
+= 如何放置腳本到JFFS =
 重啟之後ssh進入ddwrt,切換到/jffs目錄，創建/jffs/openvpn/子目錄之後下載三個files：
 
 {{{
