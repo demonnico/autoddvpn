@@ -18,7 +18,9 @@ autoddvpn最早的設計是搭配PPTP VPN使用，然而在某些不允許PPTP�
 
 =在ddwrt web界面設置openvpn client=
 
-基本上按照以下截屏來設置openvpn client即可，注意這個范例是將openvpn server listen在TCP 443 port, 請按照你的server具體來配置，但強烈建議你的server使用TCP 443。
+基本上按照以下截屏來設置openvpn client即可，注意這個范例是將openvpn server listen在UDP 443 port, 請按照你的server具體來配置，但強烈建議你的server使用UDP or TCP 443。
+
+* （說明：部分文件建議openvpn使用UDP會有最好的效能，但也有部分網友表示使用TCP反而更穩定，目前autoddvpn的開發環境是使用UDP 443）
 
 最後的 *CA Cert*, *Public Client Cert*, *Private Client Key* 這三個欄目請跟openvpn服務器管理員索取，你需要講內容當中的
 
@@ -28,7 +30,7 @@ autoddvpn最早的設計是搭配PPTP VPN使用，然而在某些不允許PPTP�
 
 連同當中的本文一起貼入，見截屏。
 
-http://autoddvpn.googlecode.com/files/openvpn-setup.png
+http://autoddvpn.googlecode.com/files/openvpn-setup-2.png
 
 =准備JFFS環境=
 您需要參考[http://code.google.com/p/autoddvpn/wiki/jffs 這份文件]裡面關於JFFS設置的說明來啟用JFFS支持，注意，只需要參考該文件來打開JFFS支持即可。
