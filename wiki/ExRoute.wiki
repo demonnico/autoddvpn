@@ -1,0 +1,89 @@
+= Introduction =
+
+這份文件說明如何在autoddvpn環境裡面設定自定義直連網段。
+
+= Details =
+
+  * 為什麼要自定義直連
+  * 如何實現
+
+ = 為什麼要自定義直連 =
+ 
+autoddvpn繼承chnroutes的設計，實現國內國外路由的分離，凡是連往國內一律使用wan gateway，而連往所有國外IP則一律使用VPN gateway，這樣的設計可以免除很多麻煩，也不需要維護復雜的翻牆名單，然而有些國外網站是你經常連上，而你很肯定這網站不需要翻牆，並且直連效果會更好的。像這種情況就需要自定義直連。
+
+因為每一個網站在每個環境可能連線速度感受不同，同樣是Flickr也許網通用戶直連反而慢，但電信用戶直連就會更好，所以autoddvpn設計了這樣的架構，讓大家可以自定義需要直連的網段，而不是強迫大家一起直連。
+
+= 如何實現 =
+
+== 使用預先定義好的關鍵字alias ==
+目前autoddvpn有提供的網站關鍵字有：
+
+ # flickr
+ # vimeo
+ # dropbox
+
+這三個網站我們都找出了他們的IP網段，定義在autoddvpn的svn裡面， 倘若需要這三個網站直連，只需要
+{{{
+nvram set exroute_enable=1
+nvram set exroute_list='flickr dropbox vimeo'
+mvram commit
+}}}
+
+這樣即可。
+
+== 使用指定的IP網段 ==
+
+此外也可以自己定義IP網段，例如
+
+{{{
+nvram set exroute_enable=1
+nvram set exroute_custom="68.142.192.0/18 69.147.64.0/18 67.195.0.0/16"
+nvram commit
+}}}
+
+詳見[http://code.google.com/p/autoddvpn/issues/detail?id=7 這裡]的說明： 
+
+= JFFS模式如何使用自定義直連 =
+必須把alias file從svn wget抓下 /jffs/exroute.d/目錄底下
+
+{{{
+$ mkdir /jffs/exroute.d/
+$ cd /jffs/exroute.d/
+$ for i in flickr vimeo dropbox; do wget http://autoddvpn.googlecode.com/svn/trunk/exroute.d/$i;done
+}}}
+
+這樣JFFS模式每次開機的時候，vpnup.sh就會根據exroute_list裡面定義的alias來查找 /jffs/exroute.d/裡面相應的alias file，啟動之後log范例如下：
+
+{{{
+root@DD-WRT:/tmp# tail -f autoddvpn.log 
+[INFO#304] 01/Jan/1970:00:00:12 log starts
+[INFO#304] 01/Jan/1970:00:00:12 modifying /tmp/openvpncl/route-up.sh
+[INFO#304] 01/Jan/1970:00:00:13 /tmp/openvpncl/route-up.sh not exists, sleep 10sec.
+[INFO#304] 28/Jul/2010:07:20:44 /tmp/openvpncl/route-up.sh not exists, sleep 10sec.
+[INFO#304] 28/Jul/2010:07:20:54 /tmp/openvpncl/route-up.sh modified
+[INFO#304] 28/Jul/2010:07:20:54 modifying /tmp/openvpncl/route-down.sh
+[INFO#304] 28/Jul/2010:07:20:54 /tmp/openvpncl/route-down.sh modified
+[INFO#304] 28/Jul/2010:07:20:54 ALL DONE. Let's wait for VPN being connected.
+[INFO#696] 28/Jul/2010:07:21:04 vpnup.sh started
+[INFO#696] 28/Jul/2010:07:21:25 preparing the exceptional routes
+[INFO#696] 28/Jul/2010:07:21:25 modifying the exceptional routes
+[INFO#696] 28/Jul/2010:07:21:25 fetching exceptional routes for flickr
+[INFO#696] 28/Jul/2010:07:21:25 adding 68.142.214.43 via wan_gateway
+[INFO#696] 28/Jul/2010:07:21:25 adding 69.147.90.159 via wan_gateway
+[INFO#696] 28/Jul/2010:07:21:25 adding 69.147.90.215 via wan_gateway
+[INFO#696] 28/Jul/2010:07:21:25 adding 67.195.19.66 via wan_gateway
+[INFO#696] 28/Jul/2010:07:21:25 adding 67.195.19.74 via wan_gateway
+[INFO#696] 28/Jul/2010:07:21:25 fetching exceptional routes for dropbox
+[INFO#696] 28/Jul/2010:07:21:26 adding 174.129.27.0/24 via wan_gateway
+[INFO#696] 28/Jul/2010:07:21:26 adding 184.73.211.0/24 via wan_gateway
+[INFO#696] 28/Jul/2010:07:21:26 adding 204.236.220.0/24 via wan_gateway
+[INFO#696] 28/Jul/2010:07:21:26 fetching exceptional routes for vimeo
+[INFO#696] 28/Jul/2010:07:21:26 adding 66.235.126.128 via wan_gateway
+10.9.9.5
+[INFO#696] 28/Jul/2010:07:21:27 modifying custom exceptional routes if available
+[INFO#696] 28/Jul/2010:07:21:29 vpnup.sh ended
+}}}
+
+== 注意：JFFS模式目前只有openvpn+jffs模式支持自定義路由。pptp+jffs模式會陸續加入 ==
+
+
