@@ -12,7 +12,7 @@ autoddvpn最早的設計是搭配PPTP VPN使用，然而在某些不允許PPTP�
 
   * ==在ddwrt web界面設置openvpn client==
   * ==准備JFFS環境==
-  * == 如何放置腳本到jffs ==
+  * == 如何放置腳本到JFFS ==
   * == rc_startup設置 ==
   * ==測試==
 
