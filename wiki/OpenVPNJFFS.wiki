@@ -6,6 +6,8 @@
 
 autoddvpn最早的設計是搭配PPTP VPN使用，然而在某些不允許PPTP穿透的網路環境可能會造成無法連上的問題，而OpenVPN的方式如果將OpenVPN server listen在TCP 443則可以滿足大部分的網路環境。
 
+目前autoddvpn+openvpn的方式只提供JFFS方式來運行。
+
 = Details =
 
   * ==在ddwrt web界面設置openvpn client==
