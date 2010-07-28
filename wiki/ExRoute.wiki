@@ -79,7 +79,6 @@ root@DD-WRT:/tmp# tail -f autoddvpn.log
 [INFO#696] 28/Jul/2010:07:21:26 adding 204.236.220.0/24 via wan_gateway
 [INFO#696] 28/Jul/2010:07:21:26 fetching exceptional routes for vimeo
 [INFO#696] 28/Jul/2010:07:21:26 adding 66.235.126.128 via wan_gateway
-10.9.9.5
 [INFO#696] 28/Jul/2010:07:21:27 modifying custom exceptional routes if available
 [INFO#696] 28/Jul/2010:07:21:29 vpnup.sh ended
 }}}
