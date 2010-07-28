@@ -12,7 +12,9 @@ autoddvpn是從[http://code.google.com/p/chnroutes/ chnroutes]啟發而來的解
 
 = 如何設置 =
 
-參考[http://code.google.com/p/autoddvpn/wiki/HOWTO 這份HOWTO文件]
+如果您只有PPTP帳號，請參考[http://code.google.com/p/autoddvpn/wiki/HOWTO 這份HOWTO文件]
+
+如果您想搭配OpenVPN帳號，請參考[http://code.google.com/p/autoddvpn/wiki/OpenVPNJFFS  這份HOWTO文件]
 
 
 = 運作原理 =
