@@ -26,7 +26,7 @@ autoddvpn繼承chnroutes的設計，實現國內國外路由的分離，凡是�
 {{{
 nvram set exroute_enable=1
 nvram set exroute_list='flickr dropbox vimeo'
-mvram commit
+nvram commit
 }}}
 
 這樣即可。
