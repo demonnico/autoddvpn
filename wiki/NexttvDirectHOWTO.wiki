@@ -89,7 +89,6 @@ $ reboot
 {{{
 $ traceroute cp93793.live.edgefcs.net
 or
-
 $ traceroute akamai.twtv.nextmedia.com
 }}}
 
