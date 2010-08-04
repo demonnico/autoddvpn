@@ -1,5 +1,3 @@
-#summary One-sentence summary of this page.
-
 = Introduction =
 
 這裡說明如何在autoddvpn設定nexttv壹電視直連，並且指定最快的nexttv CDN節點
