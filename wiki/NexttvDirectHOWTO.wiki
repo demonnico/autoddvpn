@@ -11,17 +11,17 @@
 
 = 更新你的jffs內容 =
  如果你是jffs+pptp, 你需要從這裡更新 run-dev.sh vpnup.sh vpndown.sh到ddwrt的/jffs/下
-
+{{{
 http://autoddvpn.googlecode.com/svn/trunk/jffs/run-dev.sh
 http://autoddvpn.googlecode.com/svn/trunk/jffs/vpnup.sh
 http://autoddvpn.googlecode.com/svn/trunk/jffs/vpndown.sh
-
+}}}
  如果你是jffs+pptp, 你需要從這裡更新 run-dev.sh vpnup.sh vpndown.sh到ddwrt的/jffs/openvpn/下
-
+{{{
 http://autoddvpn.googlecode.com/svn/trunk/openvpn/jffs/run-dev.sh
 http://autoddvpn.googlecode.com/svn/trunk/openvpn/jffs/vpnup.sh
 http://autoddvpn.googlecode.com/svn/trunk/openvpn/jffs/vpndown.sh
-
+}}}
 *注意，如果直接wget到ddwrt當中，需要先rm掉local file再wget, 然後記得chmod +x處理
 
 
