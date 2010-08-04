@@ -21,11 +21,12 @@ autoddvpn繼承chnroutes的設計，實現國內國外路由的分離，凡是�
  # flickr
  # vimeo
  # dropbox
+ # nexttv
 
-這三個網站我們都找出了他們的IP網段，定義在autoddvpn的svn裡面， 倘若需要這三個網站直連，只需要
+這些網站我們都找出了他們的IP網段，定義在autoddvpn的svn裡面， 倘若需要這些網站直連，只需要
 {{{
 nvram set exroute_enable=1
-nvram set exroute_list='flickr dropbox vimeo'
+nvram set exroute_list='flickr dropbox vimeo nexttv'
 nvram commit
 }}}
 
@@ -49,7 +50,7 @@ nvram commit
 {{{
 $ mkdir /jffs/exroute.d/
 $ cd /jffs/exroute.d/
-$ for i in flickr vimeo dropbox; do wget http://autoddvpn.googlecode.com/svn/trunk/exroute.d/$i;done
+$ for i in flickr vimeo dropbox nexttv; do wget http://autoddvpn.googlecode.com/svn/trunk/exroute.d/$i;done
 }}}
 
 這樣JFFS模式每次開機的時候，vpnup.sh就會根據exroute_list裡面定義的alias來查找 /jffs/exroute.d/裡面相應的alias file，啟動之後log范例如下：
@@ -83,4 +84,4 @@ root@DD-WRT:/tmp# tail -f autoddvpn.log
 [INFO#696] 28/Jul/2010:07:21:29 vpnup.sh ended
 }}}
 
-== 注意：JFFS模式目前只有openvpn+jffs模式支持自定義路由。pptp+jffs模式會陸續加入 ==
+== JFFS模式目前不管pptp or openvpn都支持自定義直連 ==
