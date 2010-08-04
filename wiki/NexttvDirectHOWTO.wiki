@@ -104,4 +104,7 @@ PING cp93793.live.edgefcs.net (203.69.113.99): 56 data bytes
 64 bytes from 203.69.113.99: icmp_seq=2 ttl=116 time=43.203 ms
 }}}
 
+直連之後觀看nexttv就非常流程，看看截屏吧
+http://autoddvpn.googlecode.com/files/nexttv-screenshot.png
+
 == 更多關於autoddvpn自定義直連技術的細節請參考[http://code.google.com/p/autoddvpn/wiki/ExRoute 這裡] ==
