@@ -53,19 +53,21 @@ reboot
 重啟之後ssh進入ddwrt,切換到/jffs目錄，下載三個files：
 
 {{{
-$ cd /jffs
-$ for i in run-dev vpnup vpndown; do wget http://autoddvpn.googlecode.com/svn/trunk/jffs/$i.sh;done;
+$ mkdir /jffs/pptp
+$ cd /jffs/pptp
+$ wget http://autoddvpn.googlecode.com/svn/trunk/pptp/jffs/run.sh
+$ for i in vpnup vpndown; do wget http://autoddvpn.googlecode.com/svn/trunk/$i.sh;done;
 $ chmod a+x *.sh
 }}}
 
-這時記得ls -l /jffs/看一下是否檔案確實下載下來了，並且都是可執行的。
+這時記得ls -l /jffs/pptp/看一下是否檔案確實下載下來了，並且都是可執行的。
 
 
 = rc_startup設置 =
 最後設置rc_startup
 
 {{{
-$ nvram set rc_startup='/jffs/run-dev.sh'
+$ nvram set rc_startup='/jffs/pptp/run.sh'
 $ nvram commit
 $ reboot
 }}}
