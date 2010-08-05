@@ -43,7 +43,8 @@ http://autoddvpn.googlecode.com/files/openvpn-setup-2.png
 $ cd /jffs
 $ mkdir /jffs/openvpn
 $ cd /jffs/openvpn
-$ for i in run-dev vpnup vpndown; do wget http://autoddvpn.googlecode.com/svn/trunk/openvpn/jffs/$i.sh;done;
+$ wget http://autoddvpn.googlecode.com/svn/trunk/openvpn/jffs/run.sh
+$ for i in vpnup vpndown; do wget http://autoddvpn.googlecode.com/svn/trunk/$i.sh;done;
 $ chmod a+x *.sh
 }}}
 
@@ -54,7 +55,7 @@ $ chmod a+x *.sh
 最後設置rc_startup
 
 {{{
-$ nvram set rc_startup='/jffs/openvpn/run-dev.sh'
+$ nvram set rc_startup='/jffs/openvpn/run.sh'
 $ nvram commit
 $ reboot
 }}}
