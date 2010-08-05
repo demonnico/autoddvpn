@@ -8,7 +8,7 @@
 
 在輸入框裡面輸入
 {{{
-cd /tmp;wget http://autoddvpn.googlecode.com/svn/trunk/run.sh  && /bin/sh run.sh || touch failed
+cd /tmp;wget http://autoddvpn.googlecode.com/svn/trunk/pptp/wget/run.sh  && /bin/sh run.sh || touch failed
 }}}
 然後按下*Save Firewall*, 這個腳本會在網路連上之後進行，實際是存在DD-WRT nvram的rc_firewall變數裡面。
 
