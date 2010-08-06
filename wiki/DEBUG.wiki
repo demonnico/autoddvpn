@@ -10,40 +10,46 @@
 
 
 = 如何查看log =
-您需要ssh進入DD-WRT， 並且查看/tmp/autoddvpn.log， 內容如下：
+您需要ssh進入DD-WRT， 並且查看/tmp/autoddvpn.log， pptp+wget為例子內容如下：
 
 {{{
-root@DD-WRT:/tmp# tail -f autoddvpn.log 
-[DEBUG] failed to get PPTPDEV, retry in 3 seconds
-[DEBUG] failed to get PPTPDEV, retry in 3 seconds
-[DEBUG] failed to get PPTPDEV, retry in 3 seconds
-[DEBUG] failed to get PPTPDEV, retry in 3 seconds
-[DEBUG] failed to get PPTPDEV, retry in 3 seconds
-[DEBUG] failed to get PPTPDEV, retry in 3 seconds
-[DEBUG] failed to get PPTPDEV, retry in 3 seconds
-[DEBUG] failed to get PPTPDEV, retry in 3 seconds
-[DEBUG] failed to get PPTPDEV, retry in 3 seconds
-[DEBUG] failed to get PPTPDEV, retry in 3 seconds
-[DEBUG] failed to get PPTPDEV, retry in 3 seconds
-[DEBUG] failed to get PPTPDEV, retry in 3 seconds
-[DEBUG] failed to get PPTPDEV, retry in 3 seconds
-[DEBUG] failed to get PPTPDEV, retry in 3 seconds <-- 從最前面到這裡表示都還沒連上VPN， 一直在檢查
-[INFO] got PPTPDEV as ppp0, set into nvram 
-[INFO] got PPTPGW as 192.168.199.1 , set into nvram <-- 這裡表示連上PPTP VPN了，gateway是192.168.199.1
-[INFO] VPN is UP, trying to modify the routing table
-[INFO] delete default gw 192.168.172.254 <--這裡表示刪除你原本的預設網關
-[INFO] add default gw 192.168.199.1   <-- 設定VPN為預設網關
-[INFO] adding the static routes, this may teke a while. <--開始加入所有國內網段，這裡可能需要30sec
-[INFO] final check the default gw <-- 最後再檢查一次
-[DEBUG] my current gw is 192.168.199.1 <-- 如果這裡是VPN網關就沒問題了
-[INFO] static routes added
-[DEBUG] return 0
-[DEBUG] break
+[INFO#445] 01/Jan/1970:00:00:26 log starts
+[INFO#445] 01/Jan/1970:00:00:26 getting vpnup.sh <--網路取得vpnup.sh
+[INFO#445] 01/Jan/1970:00:00:41 getting vpndown.sh <--網路取得vpndown.sh
+[INFO#445] 01/Jan/1970:00:00:41 modifying /tmp/pptpd_client/ip-up
+[INFO#445] 01/Jan/1970:00:00:42 /tmp/pptpd_client/ip-up not exists, sleep 10sec.
+[INFO#445] 01/Jan/1970:00:00:52 /tmp/pptpd_client/ip-up modified
+[INFO#445] 01/Jan/1970:00:00:52 modifying /tmp/pptpd_client/ip-down
+[INFO#445] 01/Jan/1970:00:00:52 /tmp/pptpd_client/ip-down modified
+[INFO#445] 01/Jan/1970:00:00:52 ALL DONE. Let's wait for VPN being connected.  <-- 前置准備動作完成，等待pptp撥號成功
+[INFO#722] 06/Aug/2010:10:21:04 vpnup.sh started <-- 撥號成功了，開始進行vpnup.sh動作
+[INFO#722] 06/Aug/2010:10:21:25 preparing the exceptional routes
+[INFO#722] 06/Aug/2010:10:21:25 modifying the exceptional routes
+[INFO#722] 06/Aug/2010:10:21:25 fetching exceptional routes for flickr
+[INFO#722] 06/Aug/2010:10:21:25 adding 68.142.214.43 via wan_gateway
+[INFO#722] 06/Aug/2010:10:21:26 adding 69.147.90.159 via wan_gateway
+[INFO#722] 06/Aug/2010:10:21:26 adding 69.147.90.215 via wan_gateway
+[INFO#722] 06/Aug/2010:10:21:26 adding 67.195.19.66 via wan_gateway
+[INFO#722] 06/Aug/2010:10:21:26 adding 67.195.19.74 via wan_gateway
+[INFO#722] 06/Aug/2010:10:21:26 adding 68.142.214.24 via wan_gateway
+[INFO#722] 06/Aug/2010:10:21:26 fetching exceptional routes for dropbox
+[INFO#722] 06/Aug/2010:10:21:26 adding 174.129.27.0/24 via wan_gateway
+[INFO#722] 06/Aug/2010:10:21:26 adding 184.73.211.0/24 via wan_gateway
+[INFO#722] 06/Aug/2010:10:21:26 adding 204.236.220.0/24 via wan_gateway
+[INFO#722] 06/Aug/2010:10:21:26 fetching exceptional routes for vimeo
+[INFO#722] 06/Aug/2010:10:21:26 adding 66.235.126.128 via wan_gateway
+[INFO#722] 06/Aug/2010:10:21:26 fetching exceptional routes for nexttv
+[INFO#722] 06/Aug/2010:10:21:26 adding 210.242.234.154 via wan_gateway
+[INFO#722] 06/Aug/2010:10:21:27 adding 96.17.8.110 via wan_gateway
+[INFO#722] 06/Aug/2010:10:21:27 adding 203.69.113.0/24 via wan_gateway
+[INFO#722] 06/Aug/2010:10:21:27 modifying custom exceptional routes if available
+[INFO] 06/Aug/2010:10:21:28 vpnup.sh ended  <--- vpnup.sh完成，到這裡應該基本OK了
+
 }}}
 
 或者也可以在DD-WRT的web管理界面的命令輸入框打 * cat /tmp/autoddvpn.log * 然後按下Run Command, 也會傳回LOG記錄。
 
 
-如果實在沒辦法解決，請試試看我們的[http://code.google.com/p/autoddvpn/wiki/DevVersion 開發版本], 如果連開發版本都不行，請[http://code.google.com/p/autoddvpn/issues/list 發Issues給我]， 方便我追蹤。
+然後[http://code.google.com/p/autoddvpn/issues/list 發Issues給我]， 方便我追蹤。
 
 如果你最後搞定了，請在twitter上告訴我 @autoddvpn 。
