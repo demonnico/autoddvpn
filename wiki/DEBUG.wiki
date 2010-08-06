@@ -5,8 +5,8 @@
 = 注意 =
 
   * DD-WRT重開機之後，通常需要1-2分鍾連上PPTP VPN, 實際連上去的速度視情況而定，所以別急著重開機就馬上上網。
-  * 重開機完成1-2分鍾後，您可以在電腦測試 *traceroute 8.8.8.8* 看看返回結果，通常第一個hop就是你的DD-WRT private IP, 而第二個hop就是VPN gateway IP, 如果你的第二個hop很明顯不是VPN IP, 那表示autoddvpn正在修改您的路由表，請再稍後30-60sec即可。
-  * 如果等了很久，traceroute指令的第二hop還是你的public gateway, 那可能你的PPTP一直連不上去，你可以查看一下log, 方法如下。
+  * 重開機完成1-2分鍾後，您可以在電腦測試打開 http://whatismyip.org 這時您看到的IP應該是您VPN gateway的public IP, 而打開 http://myip.cn 則是看到國內IP， 這兩個IP如果不一樣就成功了
+  * 如果兩個IP始終一樣，你可以查看autoddvpn.log, 方法如下：
 
 
 = 如何查看log =
