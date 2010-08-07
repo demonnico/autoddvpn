@@ -94,9 +94,6 @@ rc_startup只要一行即可
 
 == /usr/local/bin/run.sh ==
 
-見下面截屏
-
-http://autoddvpn.googlecode.com/files/rc_startup.png
 
 或者也可以ssh進去用nvram指令來下
 {{{
