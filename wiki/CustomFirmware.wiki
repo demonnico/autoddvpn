@@ -41,15 +41,20 @@ $ mkdir working_directory/rootfs/usr/local/bin
 }}}
 
 = 放入autoddvpn必要files =
-將這三個files放入 working_directory/rootfs/usr/local/bin/ 下面
+將這幾個files放入 working_directory/rootfs/usr/local/bin/ 下面
 
- # http://autoddvpn.googlecode.com/svn/trunk/bin/run.sh
  # http://autoddvpn.googlecode.com/svn/trunk/vpnup.sh
  # http://autoddvpn.googlecode.com/svn/trunk/vpndown.sh
+接著如果是搭配pptp使用請抓這個
+ # http://autoddvpn.googlecode.com/svn/trunk/bin/pptp/run.sh
+或如果是搭配openvpn使用請抓這個
+ # http://autoddvpn.googlecode.com/svn/trunk/bin/openvpn/run.sh
+
+
 
 放進去之後記得要全部chmod a+x 處理:
 {{{
-chmod a+x run-dev.sh
+chmod a+x run.sh
 chmod a+x vpnup.sh
 chmod a+x vpndown.sh
 }}}
@@ -77,7 +82,7 @@ http://autoddvpn.googlecode.com/files/FlashUpgrade.png
 root@DD-WRT:~# ls -al /usr/local/bin/
 drwxr-xr-x    2 root     root           55 Jul 18 19:40 .
 drwxr-xr-x    3 root     root           30 Jul 18 19:39 ..
--rwxr-xr-x    1 root     root         1193 Jul 18 19:39 run-dev.sh
+-rwxr-xr-x    1 root     root         1193 Jul 18 19:39 run.sh
 -rwxr-xr-x    1 root     root        46059 Jul 18 19:17 vpndown.sh
 -rwxr-xr-x    1 root     root        56351 Jul 18 19:17 vpnup.sh
 }}}
@@ -87,7 +92,7 @@ drwxr-xr-x    3 root     root           30 Jul 18 19:39 ..
 
 rc_startup只要一行即可
 
-== /usr/local/bin/run-dev.sh ==
+== /usr/local/bin/run.sh ==
 
 見下面截屏
 
@@ -96,7 +101,7 @@ http://autoddvpn.googlecode.com/files/rc_startup.png
 或者也可以ssh進去用nvram指令來下
 {{{
 nvram set rc_firewall=''
-nvram set rc_startup='/usr/local/bin/run-dev.sh'
+nvram set rc_startup='/usr/local/bin/run.sh'
 nvram commit
 }}}
 
