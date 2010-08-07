@@ -43,9 +43,9 @@ $ mkdir working_directory/rootfs/usr/local/bin
 = 放入autoddvpn必要files =
 將這三個files放入 working_directory/rootfs/usr/local/bin/ 下面
 
- # http://autoddvpn.googlecode.com/svn/trunk/bin/run-dev.sh
- # http://autoddvpn.googlecode.com/svn/trunk/bin/vpnup.sh
- # http://autoddvpn.googlecode.com/svn/trunk/bin/vpndown.sh
+ # http://autoddvpn.googlecode.com/svn/trunk/bin/run.sh
+ # http://autoddvpn.googlecode.com/svn/trunk/vpnup.sh
+ # http://autoddvpn.googlecode.com/svn/trunk/vpndown.sh
 
 放進去之後記得要全部chmod a+x 處理:
 {{{
