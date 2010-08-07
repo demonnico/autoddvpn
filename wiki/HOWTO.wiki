@@ -44,10 +44,11 @@ http://autoddvpn.googlecode.com/files/pptp-vpn-client-config.png
 
 說明：
 
-  # PPTP主機請用IP設置， 不要設置FQDN，否則容易會有問題
-  # MPPE Encryption裡面輸入 *mppe required,no40,no56,stateless*
-  # Remote Subnet 與Remote Subnet Mask是你PPTP撥上之後的VPN子網路與遮罩，請依據自己的環境設置，必要的話可以先用電腦嘗試連上PPTP, 觀察取得的VPN IP/Netmask是多少，假如是取得192.168.199.3, 則通常設置成Remote Subnet 192.168.199.0  Remote Subnet Mask 255.255.255.0即可，以此類推。*(注意：這兩個參數不用設定也是可以連上PPTP, 但是無法調整正確的路由表，造成無法順利運作，請務必弄清楚這兩個數值，如果設定錯的話會運行失敗的)*
-  # Username Password是你的PPTP撥號的帳戶密碼
+  * PPTP主機請用IP設置， 不要設置FQDN，否則容易會有問題
+  * MPPE Encryption裡面輸入 *mppe required,no40,no56,stateless*
+  * Remote Subnet 與Remote Subnet Mask是你PPTP撥上之後的VPN子網路與遮罩，請依據自己的環境設置，必要的話可以先用電腦嘗試連上PPTP, 觀察取得的VPN IP/Netmask是多少，假如是取得192.168.199.3, 則通常設置成Remote Subnet 192.168.199.0  Remote Subnet Mask 255.255.255.0即可，以此類推。*(注意：這兩個參數不用設定也是可以連上PPTP, 但是無法調整正確的路由表，造成無法順利運作，請務必弄清楚這兩個數值，如果設定錯的話會運行失敗的)* 
+==如果實在不知道怎麼找出這兩個數值，請參考[http://code.google.com/p/autoddvpn/issues/detail?id=17 這裡的教學]==
+  * Username Password是你的PPTP撥號的帳戶密碼
 
 
 = 設置DNS = 
