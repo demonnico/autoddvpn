@@ -107,8 +107,9 @@ Address: 218.6.12.180 <-- 得到上海以外的節點
 這個方式唯一存在的問題是，當ddwrt開機，DNSmasq運行起來，然而VPN尚未建立起來的時候，如果此時有twitter client或試圖連往Facebook, Youtube的DNS查詢請求對DNSMasq查詢，這時DNSMasq連往Google DNS與OpenDNS的forward request是沒有加密的，因此非常容易被DNS污染，一旦DNSMasq被污染之後所有後續的查詢都會返回污染的結果。
 
 解決方式：
-1) 確定VPN確實建立之後再運行twitter client或瀏覽Facebook, Youtube網頁
-2) 萬一真的被污染了，請telnet/ssh進入ddwrt之後執行這個命令重啟DNSMasq服務：
+
+ # 確定VPN確實建立之後再運行twitter client或瀏覽Facebook, Youtube網頁
+ # 萬一真的被污染了，請telnet/ssh進入ddwrt之後執行這個命令重啟DNSMasq服務：
 
 {{{
 # stopservice dnsmasq
