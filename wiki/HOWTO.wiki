@@ -54,22 +54,30 @@ http://autoddvpn.googlecode.com/files/pptp-vpn-client-config.png
 = 設置DNS = 
 DD-WRT使用dnsmasq來做簡易的name cache服務，因為dnsmasq只會forward到上游DNS以及cache查詢結果，並不會跟bind9一樣從Root DNS一路查詢下來，因此如果上游DNS資料被污染的話，dnsmasq的資料也會被污染。
 
-這裡我們關閉了dnsmasq服務，強迫使用Google DNS, 因為建立VPN之後DD-WRT跟Google DNS之間就走加密VPN了，因此不用擔心被污染的問題。
-_(注意：所有對境外的DNS查詢如果不是走VPN通道的話，全部都有被劫持的危險)_
+這裡我們關閉了dnsmasq服務，強迫使用Google DNS與OpenDNS, 因為建立VPN之後DD-WRT跟境外DNS之間就走加密VPN了，因此不用擔心被污染的問題，請注意，DDWRT提供的三台靜態DNS全部都要設置上去，分別設置為：
+{{{
+8.8.8.8
+8.8.4.4
+208.67.222.222
+}}}
+注意：
+# 必須三台都設置，如果設置少於三台，DDWRT會使用ISP動態發放的國內DNS來補上，這會造成風險
 
 設定方式如下：
 
-http://autoddvpn.googlecode.com/files/dns-config.png
+http://autoddvpn.googlecode.com/files/dns-config-2.png
 
 這樣的設置的優缺點是：
 
 *優點*
-  # 完全不會有DNS劫持問題
+  # 建立VPN之後，將完全不會有DNS劫持問題
 
 *缺點* 
   # DD-WRT下面的所有電腦的DNS都會被設置為Google DNS
   # DD-WRT本身不做name cache, 因此所有查詢都會經由VPN到Google去，相對的會比較慢
   # 國內一些CDN加速的網站，例如www.qq.com, 很可能Google查詢的結果並不會是最優化的結果，可能訪問會比較慢一點，實際要看每個人的感受。
+
+== 然而可以透過[http://code.google.com/p/autoddvpn/wiki/DNSMasq DNSMasq自定域名國內查詢]的方式來解決以上缺點，但建議第一次使用autoddvpn的用戶先不要理會這部分，等autoddvpn正常運行之後再來看這份文件。==
 
 
 == 接著請選擇三種模式其中一種來操作即可==
