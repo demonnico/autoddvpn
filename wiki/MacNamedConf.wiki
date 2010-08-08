@@ -18,6 +18,4 @@
 
 = 可能的解決方式 =
  # ddwrt 裡面如果能運行bind9將會是完美的解決方式，然而ddwrt目前裡面只運行DNSmasq這個僅能做DNS query forward給上游ISP的軟件
-
  # 如果您是使用Mac，您可以將內建的bind9運行起來，並且將部分域名強迫forward給上游ISP。
-
