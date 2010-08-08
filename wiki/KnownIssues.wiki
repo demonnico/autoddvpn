@@ -46,4 +46,4 @@ PING 8.8.8.8 (8.8.8.8): 56 data bytes
 ddwrt裡面的wget是使用busybox的精簡版wget，經過測試在某些情況wget會卡住，因為wget無法設置--timeout因此只能重開機。這部分目前的追蹤情況詳見[http://code.google.com/p/autoddvpn/issues/detail?id=16 這裡], 如果您有jffs的話建議使用jffs+pptp or jffs+openvpn, 會比wget模式穩定。
 
 = pptp in pptp 的問題 =
-如果您已經部署了pptp模式的autoddvpn, 然而ddwrt下面的電腦還需要pptp連線到國外網站，這樣可能會有pptp in pptp的問題，有可能會連不上的。解決方式是將改VPN IP設置在自定義直連的exroute_custom參數裡面即可解決。關於自定義直連詳見[http://code.google.com/p/autoddvpn/wiki/ExRoute 這裡]
+如果您已經部署了pptp模式的autoddvpn, 然而ddwrt下面的電腦還需要pptp連線到國外網站，這樣可能會有pptp in pptp的問題，有可能會連不上的。解決方式是將此VPN IP設置在自定義直連的exroute_custom參數裡面即可解決。關於自定義直連詳見[http://code.google.com/p/autoddvpn/wiki/ExRoute 這裡]
