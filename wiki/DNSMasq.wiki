@@ -116,4 +116,41 @@ Address: 218.6.12.180 <-- 得到上海以外的節點
 # startservive dnsmasq
 }}}
 
+= for geeks :-) =
+如果你高興的話，你可以用下面這個腳本抓出全中國alexa 100強的網站，讓這些網站進行DNS本地查詢。
+{{{
+#!/bin/sh
+
+ispdns='202.96.209.5'
+for i in 0 1 2 3 4
+do
+   curl -s "http://www.alexa.com/topsites/countries;$i/CN" | grep "small topsites-label"  | \
+   sed -e "s#.*>\([^ ]*\)<.*#server=/\1/$ispdns#g"
+done
+}}}
+
+輸出結果
+{{{
+server=/baidu.com/202.96.209.5
+server=/qq.com/202.96.209.5
+server=/taobao.com/202.96.209.5
+server=/sina.com.cn/202.96.209.5
+server=/google.com.hk/202.96.209.5
+server=/163.com/202.96.209.5
+server=/google.com/202.96.209.5
+server=/soso.com/202.96.209.5
+server=/sohu.com/202.96.209.5
+server=/youku.com/202.96.209.5
+server=/sogou.com/202.96.209.5
+server=/tudou.com/202.96.209.5
+server=/hao123.com/202.96.209.5
+server=/google.cn/202.96.209.5
+server=/yahoo.com/202.96.209.5
+server=/ifeng.com/202.96.209.5
+server=/tianya.cn/202.96.209.5
+server=/renren.com/202.96.209.5
+server=/kaixin001.com/202.96.209.5
+server=/cnzz.com/202.96.209.5
+....省略...
+}}}
 Reference: [http://www.thekelleys.org.uk/dnsmasq/docs/dnsmasq-man.html Man Page of DNSMASQ]
