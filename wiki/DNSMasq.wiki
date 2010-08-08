@@ -13,9 +13,9 @@
 = 問題背景 =
 為了避免DNS污染，autoddvpn在ddwrt的設置上使用了google DNS, 經過VPN建立之後所有DNS查詢都會透過VPN連往google DNS, 確保DNS解析不被污染，然而這卻會造成國內一些門戶網站的CDN加速機制失效。
 
-例如上海電信透過google DNS解析sina可能會出現北京CDN節點，於是上海電信就必須連往北京電信甚至北京網通才能打開網頁，這是一個很大的困擾。
+例如上海電信透過google DNS解析sina可能會出現北京CDN節點，於是上海電信就必須連往北京電信甚至北京網通才能打開網頁，這是一個很大的困擾。同樣的問題也會發生在taobao, douban甚至alipay，或許你相對來說較少使用國內網站，但是你肯定不希望打開國內網站的等待時間比別人還要長。
 
-然而這個問題不是autoddvpn的問題，只要使用google DNS或是OpenDNS的用戶全部會面臨這個問題。
+這問題不是autoddvpn才有的問題，只要使用google DNS或是OpenDNS的用戶全部會面臨這個問題。
 
 = 可能的解決方式 =
 == 開啟ddwrt的DNSmasq for DNS功能，讓ddwrt裡面的DNSmasq兼做DNS forwarder and name cache server ==
