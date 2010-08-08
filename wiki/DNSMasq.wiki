@@ -21,8 +21,8 @@
 == 開啟ddwrt的DNSmasq for DNS功能，讓ddwrt裡面的DNSmasq兼做DNS name cache server ==
 
 這樣做的好處是：
- # 所有域名解析透過ddwrt dnsmasq來進行，dnsmasq預設一律講dns解析forward到上游google DNS and OpenDNS, 而這裡的forward是透過VPN安全傳送的。
- # 透過定義額外的dnsmasq參數，指定部分國內域名forward給本地ISP DNS來解析，例如上海電信用戶將sina, QQ, douban的域名forward給上海電信DNS，如此一來sina, qq, douban等國內服務就可以享受CDN加速的效果，而不影響國外域名的安全查詢，換句話說這也是DNS查詢的國內國外分流。
+ # 所有域名解析透過ddwrt dnsmasq來進行，dnsmasq預設一律將dns解析forward到上游google DNS and OpenDNS, 而這裡的forward是透過VPN安全傳送的。
+ # 透過定義額外的dnsmasq參數，指定部分國內域名forward給本地ISP DNS來解析。例如上海電信用戶將sina, QQ, douban的域名forward給上海電信DNS，如此一來sina, QQ, douban等國內服務就可以享受CDN加速的效果，而不影響國外域名的安全查詢，換句話說這也是DNS查詢的國內國外分流。
 
 = 設定方法 =
 
