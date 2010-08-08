@@ -1,6 +1,6 @@
 = Introduction =
 
-這份文件說明autoddvpn使用時，如何藉由DNSmasq的自定義域名轉向，獲得國內CDN加速的效果。
+這份文件說明autoddvpn使用時，如何藉由DNSmasq的自定義域名轉向，實現DNS查詢分流，進而獲得國內CDN加速的效果。
 
 = Details =
 
