@@ -37,10 +37,13 @@ PING 8.8.8.8 (8.8.8.8): 56 data bytes
 64 bytes from 8.8.8.8: icmp_seq=16 ttl=55 time=203.666 ms
 }}}
 
+== 更多autoddvpn與p2p所有相關的議題，請看[http://code.google.com/p/autoddvpn/wiki/AboutP2P 這裡]。 ==
+
 = 使用Mac OS X iChat可能無法遠程桌面 =
-估計是連往apple服務器是走VPN，而國內用戶則直連，在IP信息交換的時候會出現不一致，這應該是一個bug。
+估計是連往apple服務器是走VPN，而國內用戶則直連，在IP信息交換的時候會出現不一致，這應該是一個bug，建議可以用TeamViewer軟件取代iChat遠程桌面。
 
 = 使用wget模式的時候，有可能wget會卡住 =
 ddwrt裡面的wget是使用busybox的精簡版wget，經過測試在某些情況wget會卡住，因為wget無法設置--timeout因此只能重開機。這部分目前的追蹤情況詳見[http://code.google.com/p/autoddvpn/issues/detail?id=16 這裡], 如果您有jffs的話建議使用jffs+pptp or jffs+openvpn, 會比wget模式穩定。
 
-== 更多autoddvpn與p2p所有相關的議題，請看[http://code.google.com/p/autoddvpn/wiki/AboutP2P 這裡]。 ==
+= pptp in pptp 的問題 =
+如果您已經部署了autoddvpn, 然而ddwrt下面的電腦還需要pptp連線到國外網站，這樣可能會有pptp in pptp的問題，有可能會連不上的。解決方式是將改VPN IP設置在自定義直連的exroute_custom參數裡面即可解決。關於自定義直連詳見[http://code.google.com/p/autoddvpn/wiki/ExRoute 這裡]
