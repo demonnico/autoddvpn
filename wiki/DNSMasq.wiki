@@ -115,3 +115,5 @@ Address: 218.6.12.180 <-- 得到上海以外的節點
 # stopservice dnsmasq
 # startservive dnsmasq
 }}}
+
+Reference: [http://www.thekelleys.org.uk/dnsmasq/docs/dnsmasq-man.html Man Page of DNSMASQ]
