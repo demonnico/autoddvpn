@@ -98,3 +98,30 @@ reboot
 }}}
 
 這樣重開機之後，可以觀察/tmp/autoddvpn.log就會看到exroute功能生效，所有名單動態從svn抓取存入/tmp/exroute.d/下，並且進行路由直連。
+
+log如下
+{{{
+
+[INFO#4561] 08/Aug/2010:11:53:51 vpnup.sh started
+[INFO#4561] 08/Aug/2010:11:53:56 preparing the exceptional routes
+[INFO#4561] 08/Aug/2010:11:53:56 modifying the exceptional routes
+[INFO#4561] 08/Aug/2010:11:53:56 fetching exceptional routes for flickr
+[INFO#4561] 08/Aug/2010:11:53:56 adding 68.142.214.43 via wan_gateway
+[INFO#4561] 08/Aug/2010:11:53:56 adding 69.147.90.159 via wan_gateway
+[INFO#4561] 08/Aug/2010:11:53:56 adding 69.147.90.215 via wan_gateway
+[INFO#4561] 08/Aug/2010:11:53:56 adding 67.195.19.66 via wan_gateway
+[INFO#4561] 08/Aug/2010:11:53:56 adding 67.195.19.74 via wan_gateway
+[INFO#4561] 08/Aug/2010:11:53:56 adding 68.142.214.24 via wan_gateway
+[INFO#4561] 08/Aug/2010:11:53:56 fetching exceptional routes for vimeo
+[INFO#4561] 08/Aug/2010:11:53:56 adding 66.235.126.128 via wan_gateway
+[INFO#4561] 08/Aug/2010:11:53:56 fetching exceptional routes for nexttv
+[INFO#4561] 08/Aug/2010:11:53:57 adding 210.242.234.154 via wan_gateway
+[INFO#4561] 08/Aug/2010:11:53:57 adding 96.17.8.110 via wan_gateway
+[INFO#4561] 08/Aug/2010:11:53:57 adding 203.69.113.0/24 via wan_gateway
+[INFO#4561] 08/Aug/2010:11:53:57 fetching exceptional routes for dropbox
+[INFO#4561] 08/Aug/2010:11:53:57 adding 174.129.27.0/24 via wan_gateway
+[INFO#4561] 08/Aug/2010:11:53:57 adding 184.73.211.0/24 via wan_gateway
+[INFO#4561] 08/Aug/2010:11:53:57 adding 204.236.220.0/24 via wan_gateway
+[INFO#4561] 08/Aug/2010:11:53:57 modifying custom exceptional routes if available
+[INFO#4561] 08/Aug/2010:11:53:57 vpnup.sh ended
+}}}
