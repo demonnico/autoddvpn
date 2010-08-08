@@ -1,0 +1,101 @@
+= Introduction =
+
+這份文件說明autoddvpn使用時，如何藉由DNSmasq的自定義域名轉向，獲得國內CDN加速的效果。
+
+= Details =
+
+  * 問題背景
+  * 可能的解決方式
+  * 設定方法
+
+= 問題背景 =
+為了避免DNS污染，autoddvpn在ddwrt的設置上使用了google DNS, 經過VPN建立之後所有DNS查詢都會透過VPN連往google DNS, 確保DNS解析不被污染，然而這卻會造成國內一些門戶網站的CDN加速機制失效。
+
+例如上海電信透過google DNS解析sina可能會出現北京CDN節點，於是上海電信就必須連往北京電信甚至北京網通才能打開網頁，這是一個很大的困擾。
+
+然而這個問題不是autoddvpn的問題，只要使用google DNS或是OpenDNS的用戶全部會面臨這個問題。
+
+= 可能的解決方式 =
+== 開啟ddwrt的DNSmasq for DNS功能，讓ddwrt裡面的DNSmasq兼做DNS name cache server ==
+
+這樣做的好處是：
+ # 所有域名解析透過ddwrt dnsmasq來進行，dnsmasq預設一律講dns解析forward到上游google DNS and OpenDNS, 而這裡的forward是透過VPN安全傳送的。
+ # 透過定義額外的dnsmasq參數，指定部分國內域名forward給本地ISP DNS來解析，例如上海電信用戶將sina, QQ, douban的域名forward給上海電信DNS，如此一來sina, qq, douban等國內服務就可以享受CDN加速的效果，而不影響國外域名的安全查詢，換句話說這也是DNS查詢的國內國外分流。
+
+= 設定方法 =
+
+在「設置」->「基本設置」當中：
+ # 設置靜態DNS為兩台google DNS與一台OpenDNS, 注意需要三台都設置，否則DDWRT將會使用PPPoE獲得的本地ISP DNS, 這會造成DNS劫持的風險，請直接按照以下截屏來設置靜態DNS即可
+ # 「为DNS使用DNSMasq」打勾
+http://autoddvpn.googlecode.com/files/dnsmasq-1.png
+
+在「服務」設置當中
+ # 把DNSMasq與本地DNS都勾起來
+ # 「DNSMasq附加選項」這裡設置為以下格式：
+
+{{{
+server=/sina.com.cn/202.96.209.5
+server=/qq.com/202.96.209.5
+server=/baidu.com/202.96.209.5
+server=/douban.com/202.96.209.5
+}}}
+ * 注意：/xxxx/ 當中是你希望forward給本地ISP DNS查詢的域名，後面的IP是你的ISP DNS IP， 這裡是以上海電信為例，如果你是北京網通或其他地方的電信甚至其他ISP， 請換成您ISP的DNS IP。*
+
+截屏如下：
+
+http://autoddvpn.googlecode.com/files/dnsmasq-2.png
+
+最後「保存設置」->「應用」即可。
+
+如果您可以ssh/telnet進去ddwrt, 您可以在透過這個命令查看您的設置：
+
+{{{
+root@DD-WRT:~# cat /tmp/dnsmasq.conf 
+interface=br0
+resolv-file=/tmp/resolv.dnsmasq
+dhcp-leasefile=/tmp/dnsmasq.leases
+dhcp-lease-max=50
+dhcp-option=lan,3,192.168.1.254
+dhcp-authoritative
+dhcp-range=lan,192.168.1.101,192.168.1.150,255.255.255.0,1440m
+server=/sina.com.cn/202.96.209.5
+server=/qq.com/202.96.209.5
+server=/baidu.com/202.96.209.5
+server=/douban.com/202.96.209.5
+}}}
+
+
+
+= 測試 =
+
+把ddwrt開起來，確定autoddvpn已經運行，然後查看你的電腦透過dhcp派發的DNS是否為ddwrt的IP, 如果是的話表示DNSMasq for DNS已經運行了。
+
+從上海電信測試douban CDN解析
+{{{
+macbook:~ macbook$ nslookup img2.douban.com
+Server:		192.168.1.254 <--- 這是你的ddwrt IP, 表示DNS query是透過ddwrt查詢
+Address:	192.168.1.254#53
+
+Non-authoritative answer:
+img2.douban.com	canonical name = img2.douban.com.fastcdn.com.
+img2.douban.com.fastcdn.com	canonical name = xnop001.fastcdn.com.
+xnop001.fastcdn.com	canonical name = xnop001.globalcdn.cn.
+Name:	xnop001.globalcdn.cn
+Address: 222.73.115.168 <--- 得到douban在上海電信的CDN節點
+}}}
+
+繼續測試如果透過google DNS查詢的結果
+{{{
+macbook:~ macbook$ nslookup img2.douban.com 8.8.8.8
+Server:		8.8.8.8
+Address:	8.8.8.8#53
+
+Non-authoritative answer:
+img2.douban.com	canonical name = img2.douban.com.fastcdn.com.
+img2.douban.com.fastcdn.com	canonical name = xnop001.fastcdn.com.
+xnop001.fastcdn.com	canonical name = xnop001.globalcdn.cn.
+Name:	xnop001.globalcdn.cn
+Address: 218.6.12.180 <-- 得到上海以外的節點
+}}}
+
+這樣就表示成功了！其他定義的域名可以比照這個方式來測試即可。
