@@ -3,9 +3,10 @@
 這個頁面說明autoddvpn目前的已知問題還有缺點
 
 = 國內某些網站可能無法獲得最好的CDN加速 =
-因為autoddvpn強迫使用VPN來查詢google DNS, 因此一些國內網站例如SINA, QQ等透過google DNS解析出來的結果往往不是最好的節點。例如您在上海的話很可能解析出來的節點是在北京，這是使用google DNS或OpenDNS都會碰到的CDN問題，但倘若您使用國內服務不多的話也許這個問題相對來說就不重要了。
+因為autoddvpn強迫使用VPN來查詢google DNS, 因此一些國內網站例如SINA, QQ, Douban等透過google DNS解析出來的結果往往不是最好的節點。例如您在上海的話很可能解析出來的節點是在北京，這是使用google DNS或OpenDNS都會碰到的CDN問題，但倘若您使用國內服務不多的話也許這個問題相對來說就不重要了。
 
-如果要解決這個問題，可以使用DNSMasq搭配自定義域名本地查詢的方式來實現，詳見[http://code.google.com/p/autoddvpn/wiki/DNSMasq 這份文件]。
+如果要解決這個問題，可以使用ddwrt上的DNSMasq搭配自定義域名本地查詢的方式來實現。
+==詳見[http://code.google.com/p/autoddvpn/wiki/DNSMasq 這份文件]。==
 
 = 搭配P2P大量使用的時候會造成VPN斷線 =
 
