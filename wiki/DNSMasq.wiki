@@ -18,7 +18,7 @@
 然而這個問題不是autoddvpn的問題，只要使用google DNS或是OpenDNS的用戶全部會面臨這個問題。
 
 = 可能的解決方式 =
-== 開啟ddwrt的DNSmasq for DNS功能，讓ddwrt裡面的DNSmasq兼做DNS name cache server ==
+== 開啟ddwrt的DNSmasq for DNS功能，讓ddwrt裡面的DNSmasq兼做DNS forwarder and name cache server ==
 
 這樣做的好處是：
  # 所有域名解析透過ddwrt dnsmasq來進行，dnsmasq預設一律將dns解析forward到上游google DNS and OpenDNS, 而這裡的forward是透過VPN安全傳送的。
