@@ -2,33 +2,10 @@
 
 這個頁面說明autoddvpn目前的已知問題還有缺點
 
-= 使用遠程腳本 =
+= 國內某些網站可能無法獲得最好的CDN加速 =
+因為autoddvpn強迫使用VPN來查詢google DNS, 因此一些國內網站例如SINA, QQ等透過google DNS解析出來的結果往往不是最好的節點。例如您在上海的話很可能解析出來的節點是在北京，這是使用google DNS或OpenDNS都會碰到的CDN問題，但倘若您使用國內服務不多的話也許這個問題相對來說就不重要了。
 
-autoddvpn 目前需要依賴wget將googlecode上面的遠程run.sh代碼抓回來，然後動態執行代碼裡面的內容，這是因為DD-WRT的nvram裡面沒辦法存放太大的shell script, 因此只能用這個辦法，如果你的DD-WRT可以支持/jffs並且可以掛載USB裝置的話，就可以完全不需要遠程執行script了，有興趣的朋友請參考[http://code.google.com/p/autoddvpn/wiki/RunLocal 這份文件]來運行本地腳本。
-
-也正因為目前依賴googlecode的遠程腳本，萬一googlecode被GFW的話就比較麻煩了，但是用戶可以把這三個腳本放到自己的web服務器：
-
-  * run.sh
-  * vpnup.sh
-  * vpndown.sh (實際不需要用到)
-
-修改 run.sh
-
-{{{
-DLDIR='http://autoddvpn.googlecode.com/svn/trunk/'
-}}}
-
-改成自己web空間對應的目錄，例如
-{{{
-DLDIR='http://your_domain/path-to-the-file/'
-}}}
-
-然後修改rc_firewall成這樣即可：
-
-{{{
-test -f /tmp/rc_fw_done || wget http://your_domain/path-to-the-file/run.sh -O - | /bin/sh
-}}}
-
+目前還沒有很好的解決方式。
 
 = 搭配P2P大量使用的時候會造成VPN斷線 =
 
@@ -62,5 +39,8 @@ PING 8.8.8.8 (8.8.8.8): 56 data bytes
 
 = 使用Mac OS X iChat可能無法遠程桌面 =
 估計是連往apple服務器是走VPN，而國內用戶則直連，在IP信息交換的時候會出現不一致，這應該是一個bug。
+
+= 使用wget模式的時候，有可能wget會卡住 =
+ddwrt裡面的wget是使用busybox的精簡版wget，經過測試在某些情況wget會卡住，因為wget無法設置--timeout因此只能重開機。這部分目前的追蹤情況詳見[http://code.google.com/p/autoddvpn/issues/detail?id=16 這裡], 如果您有jffs的話建議使用jffs+pptp or jffs+openvpn, 會比wget模式穩定。
 
 == 更多autoddvpn與p2p所有相關的議題，請看[http://code.google.com/p/autoddvpn/wiki/AboutP2P 這裡]。 ==
