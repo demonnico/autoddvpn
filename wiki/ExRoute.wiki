@@ -14,8 +14,10 @@ autoddvpn繼承chnroutes的設計，實現國內國外路由的分離，凡是�
 因為每一個網站在每個環境可能連線速度感受不同，同樣是Flickr也許網通用戶直連反而慢，但電信用戶直連就會更好，所以autoddvpn設計了這樣的架構，讓大家可以自定義需要直連的網段，而不是強迫大家一起直連。
 
 = 如何實現 =
+ # 使用exroute_list 來指定預先定義好的關鍵字alias
+ # 使用exroute_custom 來指定自定義網段或單個IP
 
-== 使用預先定義好的關鍵字alias ==
+== 使用exroute_list 來指定預先定義好的關鍵字alias ==
 目前autoddvpn有提供的網站關鍵字有：
 
  # flickr
@@ -32,15 +34,17 @@ nvram commit
 
 這樣即可。
 
-== 使用指定的IP網段 ==
+== 使用exroute_custom 來指定自定義網段或單個IP ==
 
-此外也可以自己定義IP網段，例如
+此外也可以自己定義IP網段，定義exroute_custom， 這裡通常是autoddvpn沒有預先定義的網段，依據個人需要可以自己來指定，設定方式如下：
 
 {{{
 nvram set exroute_enable=1
-nvram set exroute_custom="68.142.192.0/18 69.147.64.0/18 67.195.0.0/16"
+nvram set exroute_custom="68.142.192.0/18 69.147.64.0/18 67.195.0.0/16 174.36.30.70"
 nvram commit
 }}}
+
+* 注意：exroute_custom這裡設置的內容可以是一個網段或是單個IP， 注意使用單個IP的時候不需要加上netmask, 例如只需要174.36.30.70即可，不需要174.36.30.70/32， 而整個class C則是 174.36.30.0/24*
 
 詳見[http://code.google.com/p/autoddvpn/issues/detail?id=7 這裡]的說明： 
 
