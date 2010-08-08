@@ -5,7 +5,7 @@
 = 國內某些網站可能無法獲得最好的CDN加速 =
 因為autoddvpn強迫使用VPN來查詢google DNS, 因此一些國內網站例如SINA, QQ等透過google DNS解析出來的結果往往不是最好的節點。例如您在上海的話很可能解析出來的節點是在北京，這是使用google DNS或OpenDNS都會碰到的CDN問題，但倘若您使用國內服務不多的話也許這個問題相對來說就不重要了。
 
-目前還沒有很好的解決方式。有個變通方式是，如果您是Mac用戶，可以把內建的bind9跑起來，然後在/etc/named.conf裡面定義某些國內域名forward給本地ISP的DNS，例如上海電信用戶forward給上海電信DNS， 然後將Mac的DNS指定使用127.0.0.1這樣這些域名的CDN就可以發揮效用，實際配置的范例待補上。
+目前還沒有很好的解決方式。有個變通方式是，如果您是Mac用戶，可以把內建的bind9跑起來，然後在/etc/named.conf裡面定義某些國內域名forward給本地ISP的DNS，例如上海電信用戶可以將sina.com.cn 以及qq.com等域名forward給上海電信DNS， 然後將Mac的DNS指定使用127.0.0.1這樣這些域名的CDN就可以發揮效用，實際配置的范例待補上。
 
 = 搭配P2P大量使用的時候會造成VPN斷線 =
 
