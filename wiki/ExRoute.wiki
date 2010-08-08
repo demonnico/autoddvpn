@@ -85,3 +85,16 @@ root@DD-WRT:/tmp# tail -f autoddvpn.log
 }}}
 
 == JFFS模式目前不管pptp or openvpn都支持自定義直連 ==
+
+
+= Wget模式如何使用自定義直連 =
+wget模式因為不提供/jffs/寫入功能，因此所有內容都是開機之後動態抓取處理的。目前Wget模式同樣也支持exroute功能，同樣也只需要
+
+{{{
+# nvram set exroute_enable=1
+# nvram set exroute_list='flickr dropbox vimeo nexttv'
+# nvram commit
+# reboot
+}}}
+
+這樣重開機之後，可以觀察/tmp/autoddvpn.log就會看到exroute功能生效，所有名單動態從svn抓取存入/tmp/exroute.d/下，並且進行路由直連。
