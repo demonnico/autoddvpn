@@ -154,4 +154,17 @@ server=/kaixin001.com/202.96.209.5
 server=/cnzz.com/202.96.209.5
 ....省略...
 }}}
+
+或者你可以運行上面腳本，但最後輸出過濾掉 ".cn"字符，也就是top 100但是沒有.cn字符的(大多是.com), 最後再加一行
+{{{
+server=/cn/202.96.209.5
+}}}
+
+如此一來*top 100中國.com網站*加上*所有.cn網站*，一律本地ISP DNS查詢，也許這樣更好。
+
+除此之外有些網站不在top 100，但是你偶爾會用到，也建議你加入的包括
+{{{
+ctrip.com
+}}}
+
 Reference: [http://www.thekelleys.org.uk/dnsmasq/docs/dnsmasq-man.html Man Page of DNSMASQ]
