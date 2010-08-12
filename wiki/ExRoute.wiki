@@ -93,6 +93,18 @@ root@DD-WRT:/tmp# tail -f autoddvpn.log
 [INFO#696] 28/Jul/2010:07:21:29 vpnup.sh ended
 }}}
 
+
+= JFFS模式如何更新定義好的直連文件 =
+例如要更新nexttv定義的話
+
+{{{
+$ cd /jffs/exroute.d/
+$ rm nexttv
+$ wget http://autoddvpn.googlecode.com/svn/trunk/exroute.d/nexttv
+}}}
+
+然後再重開機ddwrt即可，這樣新的nexttv定義就會生效
+
 == JFFS模式目前不管pptp or openvpn都支持自定義直連 ==
 
 
