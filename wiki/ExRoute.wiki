@@ -14,24 +14,25 @@ autoddvpn繼承chnroutes的設計，實現國內國外路由的分離，凡是�
 因為每一個網站在每個環境可能連線速度感受不同，同樣是Flickr也許網通用戶直連反而慢，但電信用戶直連就會更好，所以autoddvpn設計了這樣的架構，讓大家可以自定義需要直連的網段，而不是強迫大家一起直連。
 
 = 如何實現 =
- # 使用exroute_list 來指定預先定義好的關鍵字alias
+ # 使用exroute_list 來指定預先定義好的exroute profile
  # 使用exroute_custom 來指定自定義網段或單個IP
 
-== 使用exroute_list 來指定預先定義好的關鍵字alias ==
-目前autoddvpn有提供的網站關鍵字有：
+== 使用exroute_list 來指定預先定義好的exroute profile ==
+目前autoddvpn有提供的exroute profile有：
 
  # flickr
  # vimeo
  # dropbox
+ # nexttv
  # gmail
 詳見[http://code.google.com/p/autoddvpn/source/browse/#svn/trunk/exroute.d 這裡的列表]
 
-這些網站我們都找出了他們的IP網段，定義在autoddvpn的svn裡面， 這樣大家可以共享方便的設定，不需要每一個人都去查找到底什麼網站使用什麼網段。然而每個人的需求不同，有些人可能完全不看vimeo or flickr, 有些人也甚至完全不用dropbox的，因此這些預先定義的alias可以依據實際的需要來設定使用，一旦設定了之後，alias背後定義的網段就會直連，速度往往比透過VPN還快，甚至可以節省VPN流量。
+這些網站我們都找出了他們的IP網段，定義在autoddvpn的svn裡面， 這樣大家可以共享方便的設定，不需要每一個人都去查找到底什麼網站使用什麼網段。然而每個人的需求不同，有些人可能完全不看vimeo or flickr, 有些人也甚至完全不用dropbox的，因此這些預先定義的alias可以依據實際的需要來設定使用，一旦設定了之後，exroute profile背後定義的網段就會直連，速度往往比透過VPN還快，甚至可以節省VPN流量。
 
 倘若需要這些網站直連，只需要
 {{{
 nvram set exroute_enable=1
-nvram set exroute_list='flickr dropbox vimeo'
+nvram set exroute_list='flickr dropbox vimeo nexttv gmail'
 nvram commit
 }}}
 
@@ -54,15 +55,15 @@ nvram commit
 詳見[http://code.google.com/p/autoddvpn/issues/detail?id=7 這裡]的說明： 
 
 = JFFS模式如何使用自定義直連 =
-必須把alias file從svn wget抓下 /jffs/exroute.d/目錄底下
+必須把exroute profile從svn wget抓下 /jffs/exroute.d/目錄底下
 
 {{{
 $ mkdir /jffs/exroute.d/
 $ cd /jffs/exroute.d/
-$ for i in flickr vimeo dropbox; do wget http://autoddvpn.googlecode.com/svn/trunk/exroute.d/$i;done
+$ for i in flickr vimeo dropbox nexttv gmail; do wget http://autoddvpn.googlecode.com/svn/trunk/exroute.d/$i;done
 }}}
 
-這樣JFFS模式每次開機的時候，vpnup.sh就會根據exroute_list裡面定義的alias來查找 /jffs/exroute.d/裡面相應的alias file，啟動之後log范例如下：
+這樣JFFS模式每次開機的時候，vpnup.sh就會根據exroute_list裡面定義的內容來查找 /jffs/exroute.d/裡面相應的exroute profile，啟動之後log范例如下：
 
 {{{
 root@DD-WRT:/tmp# tail -f autoddvpn.log 
@@ -94,12 +95,12 @@ root@DD-WRT:/tmp# tail -f autoddvpn.log
 }}}
 
 
-= JFFS模式如何更新定義好的直連文件 =
-例如要更新nexttv定義的話
+= JFFS模式如何更新定義好的exroute profile =
+例如要更新nexttv profile的話
 
 {{{
 $ cd /jffs/exroute.d/
-$ rm nexttv
+$ rm nexttv  注意一定要先rm掉
 $ wget http://autoddvpn.googlecode.com/svn/trunk/exroute.d/nexttv
 }}}
 
@@ -113,7 +114,7 @@ wget模式因為不提供/jffs/寫入功能，因此所有內容都是開機之�
 
 {{{
 nvram set exroute_enable=1
-nvram set exroute_list='flickr dropbox vimeo nexttv'
+nvram set exroute_list='flickr dropbox vimeo nexttv gmail'
 nvram commit
 reboot
 }}}
