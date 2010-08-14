@@ -44,7 +44,9 @@ nvram commit
 
 == 使用exroute_custom 來指定自定義網段或單個IP ==
 
-此外也可以自己定義IP網段，定義exroute_custom， 這裡通常是autoddvpn沒有預先定義的網段，依據個人需要可以自己來指定，設定方式如下：
+此外也可以自己定義IP網段，定義exroute_custom， 這裡通常是autoddvpn沒有預先定義的網段，依據個人需要可以自己來指定。autoddvpn會在ddwrt開機之後透過nvram get來獲得exroute_custom定義的網段，並且動態地把這些網段設定成直連。
+
+設定方式如下：
 
 {{{
 nvram set exroute_enable=1
