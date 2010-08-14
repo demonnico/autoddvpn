@@ -56,6 +56,19 @@ nvram commit
 
 詳見[http://code.google.com/p/autoddvpn/issues/detail?id=7 這裡]的說明： 
 
+== 已經定義exroute_custom之後如果還要新增IP ==
+如果之前已經定義過 exroute_custom了，發現還需要新增的話，例如需要加60.60.60.60這單個IP
+
+{{{
+nvram set exroute_custom="$(nvram get exroute_custom) 60.60.60.60" 
+nvram commit
+}}}
+這樣即可，不放心的話可以檢查一下：
+{{{
+nvram get exroute_custom
+}}}
+這樣會列出所有自定義直連的網段
+
 = JFFS模式如何使用自定義直連 =
 必須把exroute profile從svn wget抓下 /jffs/exroute.d/目錄底下
 
