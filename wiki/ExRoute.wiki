@@ -25,6 +25,8 @@ autoddvpn繼承chnroutes的設計，實現國內國外路由的分離，凡是�
  # dropbox
  # nexttv
  # gmail
+ # gtalk
+
 詳見[http://code.google.com/p/autoddvpn/source/browse/#svn/trunk/exroute.d 這裡的列表]
 
 這些網站我們都找出了他們的IP網段，定義在autoddvpn的svn裡面， 這樣大家可以共享方便的設定，不需要每一個人都去查找到底什麼網站使用什麼網段。然而每個人的需求不同，有些人可能完全不看vimeo or flickr, 有些人也甚至完全不用dropbox的，因此這些預先定義的alias可以依據實際的需要來設定使用，一旦設定了之後，exroute profile背後定義的網段就會直連，速度往往比透過VPN還快，甚至可以節省VPN流量。
