@@ -98,7 +98,7 @@ root@DD-WRT:/tmp# tail -f autoddvpn.log
 
 
 = JFFS模式如何更新定義好的exroute profile =
-例如要更新nexttv profile的話
+例如nexttv這個profile已經有設定了，但是profile在SVN上面做了修改，需要更新：
 
 {{{
 $ cd /jffs/exroute.d/
