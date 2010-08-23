@@ -34,7 +34,7 @@ autoddvpn繼承chnroutes的設計，實現國內國外路由的分離，凡是�
 倘若需要這些網站直連，只需要
 {{{
 nvram set exroute_enable=1
-nvram set exroute_list='flickr dropbox vimeo nexttv gmail'
+nvram set exroute_list='dropbox flickr gmail gtalk msn nexttv vimeo'
 nvram commit
 }}}
 
@@ -77,7 +77,7 @@ nvram get exroute_custom
 {{{
 $ mkdir /jffs/exroute.d/
 $ cd /jffs/exroute.d/
-$ for i in flickr vimeo dropbox nexttv gmail; do wget http://autoddvpn.googlecode.com/svn/trunk/exroute.d/$i;done
+$ for i in dropbox flickr gmail gtalk msn nexttv vimeo; do wget http://autoddvpn.googlecode.com/svn/trunk/exroute.d/$i;done
 }}}
 
 這樣JFFS模式每次開機的時候，vpnup.sh就會根據exroute_list裡面定義的內容來查找 /jffs/exroute.d/裡面相應的exroute profile，啟動之後log范例如下：
@@ -131,7 +131,7 @@ wget模式因為不提供/jffs/寫入功能，因此所有內容都是開機之�
 
 {{{
 nvram set exroute_enable=1
-nvram set exroute_list='flickr dropbox vimeo nexttv gmail'
+nvram set exroute_list='dropbox flickr gmail gtalk msn nexttv vimeo'
 nvram commit
 reboot
 }}}
