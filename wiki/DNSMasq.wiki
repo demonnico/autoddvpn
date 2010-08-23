@@ -31,8 +31,11 @@
  # 「为DNS使用DNSMasq」打勾
 http://autoddvpn.googlecode.com/files/dnsmasq-1.png
 
-在「服務」設置當中
- # 把DNSMasq與本地DNS都勾起來
+在「服務」設置當中做如下的設置：
+
+http://autoddvpn.googlecode.com/files/dnsmasq-2.png
+
+ # 把「DNSMasq」與「本地DNS」都勾起來
  # 「DNSMasq附加選項」這裡設置為以下格式：
 
 {{{
@@ -43,9 +46,6 @@ server=/douban.com/202.96.209.5
 }}}
  * 注意：/xxxx/ 當中是你希望forward給本地ISP DNS查詢的域名，後面的IP是你的ISP DNS IP， 這裡是以上海電信為例，如果你是北京網通或其他地方的電信甚至其他ISP， 請換成您ISP的DNS IP。*
 
-截屏如下：
-
-http://autoddvpn.googlecode.com/files/dnsmasq-2.png
 
 最後「保存設置」->「應用」即可。
 
