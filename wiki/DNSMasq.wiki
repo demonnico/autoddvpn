@@ -164,13 +164,14 @@ homeinns.com
 我目前的設置：
 {{{
 root@DD-WRT:~# nvram get dnsmasq_options
+address=/www.facebook.com/66.220.149.25 
+address=/www.youtube.com/72.14.213.190
 server=/cn/202.96.209.5
 server=/baidu.com/202.96.209.5
 server=/qq.com/202.96.209.5
 server=/taobao.com/202.96.209.5
 server=/google.com.hk/202.96.209.5
 server=/163.com/202.96.209.5
-server=/google.com/202.96.209.5
 server=/soso.com/202.96.209.5
 server=/sohu.com/202.96.209.5
 server=/youku.com/202.96.209.5
