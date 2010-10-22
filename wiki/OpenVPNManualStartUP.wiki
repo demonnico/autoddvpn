@@ -12,6 +12,7 @@
  # 如果你的openvpn server在啟動的時候需要指定user/pass, 也就是 auth-user-pass這樣的參數
  # 如果需要openvpn client可以ping server，必要的時候進行自動重啟
  # 你有多個openvpn server，需要進行remote-random的隨機連線配置
+ # 你可以設定更多openvpn的進階選項，而不必受限於DDWRT web UI所能提供的
 
 = 設置方式 =
 
