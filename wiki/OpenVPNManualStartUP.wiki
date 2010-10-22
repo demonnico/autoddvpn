@@ -70,6 +70,11 @@ nvram set openvpncl_enable=0
 nvram commit
 }}}
 
-然後重開機之後就可以了。
+重開機之前你可以先手動測試：
+{{{
+killall openvpn
+openvpn --config /jffs/openvpn/openvpn.conf --verb 5
+}}}
+這是打開verbose模式，你可以看到很多執行的output, 來判斷是否運作正常，如果沒問題就可以重開讓它自動執行了。
 
 最後感謝 @jkgtw @yegle 的測試以及回報。
