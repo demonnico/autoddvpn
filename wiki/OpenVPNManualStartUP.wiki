@@ -71,3 +71,5 @@ nvram commit
 }}}
 
 然後重開機之後就可以了。
+
+最後感謝 @jkgtw @yegle 的測試以及回報。
