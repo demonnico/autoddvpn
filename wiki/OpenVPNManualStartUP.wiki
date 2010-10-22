@@ -56,5 +56,18 @@ auth-user-pass /jffs/openvpn/password.txt
 }}}
 
 注意:
-* 如果你的openvpn server不需要user authentication, 則auth-user-pass不用寫
 
+ * 如果你的openvpn server不需要user authentication, 則auth-user-pass不用寫
+ * 如果openvpn server沒有啟動lzo壓縮傳輸，則comp-lzo不用寫
+
+修改rc_startup
+{{{
+nvram set rc_startup='openvpn --config /jffs/openvpn/openvpn.conf --daemon'
+}}}
+開機時不啟動ddwrt自帶的openvpn client, 而是由rc_startup來啟動。
+{{{
+nvram set openvpncl_enable=0
+nvram commit
+}}}
+
+然後重開機之後就可以了。
