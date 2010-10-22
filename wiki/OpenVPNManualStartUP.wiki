@@ -56,7 +56,8 @@ auth-user-pass /jffs/openvpn/password.txt
 }}}
 
 注意:
-
+ 
+ * 如果你只有一個openvpn server可以用，則只需要寫一個<connection>即可，同時不需要 remote-random
  * 如果你的openvpn server不需要user authentication, 則auth-user-pass不用寫
  * 如果openvpn server沒有啟動lzo壓縮傳輸，則comp-lzo不用寫
 
