@@ -8,7 +8,7 @@
   * 設置方式
 
 
-=   手動啟動OpenVPN的好處？ =
+=   手動啟動OpenVPN的目的 =
  # 如果你的openvpn server在啟動的時候需要指定user/pass, 也就是 auth-user-pass這樣的參數
  # 如果需要openvpn client可以ping server，必要的時候進行自動重啟
  # 你有多個openvpn server，需要進行remote-random的隨機連線配置
