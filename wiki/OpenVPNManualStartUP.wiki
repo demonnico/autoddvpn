@@ -53,6 +53,7 @@ remote-cert-tls server
 ping 10
 ping-restart 60       
 auth-user-pass /jffs/openvpn/password.txt  
+log /tmp/openvpn/log
 }}}
 
 注意:
@@ -60,11 +61,14 @@ auth-user-pass /jffs/openvpn/password.txt
  * 如果你只有一個openvpn server可以用，則只需要寫一個< connection >即可，同時不需要 remote-random
  * 如果你的openvpn server不需要user authentication, 則auth-user-pass不用寫
  * 如果openvpn server沒有啟動lzo壓縮傳輸，則comp-lzo不用寫
+ * 最後一行log寫入/tmp/下，每次重開機會被清空，如果你完全不需要看log，這行可以不用。
 
 修改rc_startup
 {{{
-nvram set rc_startup='openvpn --config /jffs/openvpn/openvpn.conf --daemon'
+nvram set rc_startup='date 20100729; openvpn --config /jffs/openvpn/openvpn.conf --daemon'
 }}}
+* 注意：rc_startup修改了時間是為了修正[http://code.google.com/p/autoddvpn/issues/detail?id=14 這個issue], 否則TLS handshaking會fail。
+
 開機時不啟動ddwrt自帶的openvpn client, 而是由rc_startup來啟動。
 {{{
 nvram set openvpncl_enable=0
