@@ -53,7 +53,7 @@ remote-cert-tls server
 ping 10
 ping-restart 60       
 auth-user-pass /jffs/openvpn/password.txt  
-log /tmp/openvpn/log
+log /tmp/openvpn.log
 }}}
 
 注意:
