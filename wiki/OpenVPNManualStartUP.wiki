@@ -1,6 +1,6 @@
 = Introduction =
 
-這份文件說明如何更進階地在DDWRT裡面啟動OpenVPN，已獲得更多的功能支持。
+這份文件說明如何更進階地在DDWRT裡面啟動OpenVPN，以獲得更多的功能支持。
 
 = Details =
 
