@@ -60,6 +60,7 @@ log /tmp/openvpn.log
  
  * 如果你只有一個openvpn server可以用，則只需要寫一個< connection >即可，同時不需要 remote-random
  * 如果你的openvpn server不需要user authentication, 則auth-user-pass不用寫
+ * ping 10 ping-restart 60表示每10秒client ping一次server, 如果60秒都沒有回應就重啟client，如果你對連線比較敏感的話，可以設為ping 5  ping-restart 20
  * 如果openvpn server沒有啟動lzo壓縮傳輸，則comp-lzo不用寫
  * 最後一行log寫入/tmp/下，每次重開機會被清空，如果你完全不需要看log，這行可以不用。
 
