@@ -120,7 +120,15 @@ route add -host xxx.xxx.xxx.xxx <your_vpn_gateway>
 我正在研究這個部分，不過因為DDWRT裡面沒有svn 沒有curl ，只有自帶一個非常精簡的wget command, 因此要比對SVN上面的版本號再決定是否更新vpnup.sh內容並不容易，如果大家有好的方法歡迎告訴我，目前恐怕只能手動更新了。
 
 == 我可以不直接修改vpnup.sh而是修改自定義的文件嗎？ ==
-未來我打算讓用戶自己修改一個custom_vpnup, 裡面定義自己的route add/del, 而vpnup.sh會先執行custom_vpnup的內容，再執行本身的內容，這樣就如同gfwList一樣可以優先以自己定義的為主了。
+可以的，編輯一個custom_vpnup文件，依據自己到情況放到/jffs/openvpn/或/jffs/pptp/下, 裡面定義自己的route add/del內容, vpnup.sh會先載入custom_vpnup的路由規則再載入本身的規則，這樣就如同gfwList一樣可以優先以自己定義的為主了。vpnup_custom設置范例如下：
+{{{
+# this script will be executed before loading the routing rules in vpnup.sh
+# Example:
+# route add -host 208.67.222.222 gw $VPNGW
+# route add -net 74.125.0.0/16 gw $VPNGW
+
+route add -host 96.16.157.15 gw $VPNGW
+}}}
 
 == 有些網站雖然不需要翻牆，但是走VPN比較快，可以強迫走VPN嗎？ ==
 可以的，除了前面提到custom_vpnup文件來定義之外，未來也可以考慮透過
