@@ -8,6 +8,8 @@
   * 面臨的問題
   * 解決之道
   * 設置方式
+  * 測試
+
 
 = 緣起 =
 
@@ -30,4 +32,73 @@ autoddvpn最早是從[http://code.google.com/p/chnroutes/ chnroutes]的設計所
  # p2p可以正常使用，因為你的p2p節點不會在facebook, twitter, youtube這些公司的IDC機房裡面，因此所有p2p流量全部都是直連，包括國外節點，你只需要擔心你的DDWRT路由器CPU內存等硬件配備是否足以支撐即可。
  # 盡量不依賴VPN穩定度，萬一VPN不穩頂多需要翻牆的網站連不上，其余國內網站例如douban或國外網站例如gmail必須訪問正常，不能有任何影響。
 
-= 設置方式 =
+= 設置方式(以OpenVPN為例) =
+ # DDWRT必須啟動JFFS，[http://code.google.com/p/autoddvpn/wiki/jffs 參考這裡]
+ # 設置DDWRT使其可以正常連上WAN
+ # DDWRT setup裡面的 Static DNS 1~3 請保持0.0.0.0 不要設定Google DNS或任何DNS，讓DDWRT預設使用ISP或DHCP提供的DNS
+ # Services->DNSMasq裡面*DNSMasq Local DNS No DNS Rebind* 全部都 *Enable*
+ # Additional DNSMasq Options 請填入
+{{{
+address=/www.facebook.com/66.220.149.25 
+address=/www.youtube.com/72.14.213.190
+server=/google.com/8.8.8.8
+server=/facebook.com/8.8.8.8
+server=/fbcdn.net/8.8.8.8
+server=/twitter.com/8.8.8.8
+server=/youtube.com/8.8.8.8
+}}}
+說明：DNSMasq是DDWRT裡面的一個name cache server, 它可以定義static A RR或者定義某些域名強迫從某個DNS來做解析，上面這個設置范例是先定義好www.facebook.com www.youtube.com 的域名解析結果，對於經常上facebook and youtube的人會有很大的幫助，同時指定某些容易被DNS劫持的域名例如facebook.com fbcdn.net twitter.com youtube.com一律由Google DNS 8.8.8.8來做解析，因為8.8.8.8之後會強迫走VPN，因此不用擔心DNS劫持，除非VPN斷線路由表被清空，這時DNSMasq才有可能被污染。
+ # 接著ssh進入DDWRT：
+{{{
+# mkdir /jffs/openvpn
+# cd /jffs/openvpn
+# wget http://autoddvpn.googlecode.com/svn/trunk/grace.d/vpnup.sh
+# wget http://autoddvpn.googlecode.com/svn/trunk/grace.d/vpndown.sh
+# wget http://autoddvpn.googlecode.com/svn/trunk/openvpn/jffs/run.sh
+# chmod a+x *.sh
+# nvram set rc_startup='date 20100729; openvpn --config /jffs/openvpn/openvpn.conf --daemon'
+# nvram commit
+}}}
+
+# 接著參考[http://code.google.com/p/autoddvpn/wiki/OpenVPNManualStartUP 這份文件]，准備好你的OpenVPN設置，使其能手動啟動，設置文件放在 /jffs/openvpn/openvpn.conf
+
+最後重新啟動DDWRT即可，啟動之後會產生兩個log
+ # /tmp/autoddvpn.log 這是autoddvpn的log
+ # /tmp/openvpn.log 這是openvpn的log
+
+
+= 設置方式(以PPTP為例) =
+
+# DDWRT必須啟動JFFS，[http://code.google.com/p/autoddvpn/wiki/jffs 參考這裡]
+ # 設置DDWRT使其可以正常連上WAN
+ # DDWRT setup裡面的 Static DNS 1~3 請保持0.0.0.0 不要設定Google DNS或任何DNS，讓DDWRT預設使用ISP或DHCP提供的DNS
+ # Services->DNSMasq裡面*DNSMasq Local DNS No DNS Rebind* 全部都 *Enable*
+ # Additional DNSMasq Options 請填入
+{{{
+address=/www.facebook.com/66.220.149.25 
+address=/www.youtube.com/72.14.213.190
+server=/google.com/8.8.8.8
+server=/facebook.com/8.8.8.8
+server=/fbcdn.net/8.8.8.8
+server=/twitter.com/8.8.8.8
+server=/youtube.com/8.8.8.8
+}}}
+說明：DNSMasq是DDWRT裡面的一個name cache server, 它可以定義static A RR或者定義某些域名強迫從某個DNS來做解析，上面這個設置范例是先定義好www.facebook.com www.youtube.com 的域名解析結果，對於經常上facebook and youtube的人會有很大的幫助，同時指定某些容易被DNS劫持的域名例如facebook.com fbcdn.net twitter.com youtube.com一律由Google DNS 8.8.8.8來做解析，因為8.8.8.8之後會強迫走VPN，因此不用擔心DNS劫持，除非VPN斷線路由表被清空，這時DNSMasq才有可能被污染。
+ # 接著ssh進入DDWRT：
+{{{
+# mkdir /jffs/pptp
+# cd /jffs/pptp
+# wget http://autoddvpn.googlecode.com/svn/trunk/grace.d/vpnup.sh
+# wget http://autoddvpn.googlecode.com/svn/trunk/grace.d/vpndown.sh
+# wget http://autoddvpn.googlecode.com/svn/trunk/pptp/jffs/run.sh
+# chmod a+x *.sh
+# nvram set rc_startup='/jffs/pptp/run.sh'
+# nvram commit
+}}}
+
+# 接著參考[http://code.google.com/p/autoddvpn/wiki/HOWTO 這份文件] *設置PPTP client* 的部分，准備好你的PPTP client設置
+
+最後重新啟動DDWRT即可，啟動之後會產生一個log
+ # /tmp/autoddvpn.log 這是autoddvpn的log
+
+= 測試 =
