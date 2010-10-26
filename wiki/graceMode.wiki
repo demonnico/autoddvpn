@@ -131,12 +131,7 @@ route add -host 96.16.157.15 gw $VPNGW
 }}}
 
 == 有些網站雖然不需要翻牆，但是走VPN比較快，可以強迫走VPN嗎？ ==
-可以的，除了前面提到custom_vpnup文件來定義之外，未來也可以考慮透過
-{{{
-nvram set always_vpn_list='xxx.xxx.xxx.xxx'
-nvram set always_vpn_custom='flickr dropbox gmail'
-}}}
-類似這樣的形式來定義強迫走VPN的IP或者網站alias。
+可以的，如同前面所說的，定義vpnup_custom文件即可。
 
 == 我可以放心使用P2P嗎？ ==
 可以的，graceMode完全可以放心使用p2p,  所有p2p流量都不會走VPN，除非你要翻牆的網站本身使用的IP網段也跑p2p了，不過這個機會非常小。
