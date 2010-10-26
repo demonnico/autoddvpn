@@ -133,4 +133,5 @@ nvram set always_vpn_custom='flickr dropbox gmail'
 == 我可以放心使用P2P嗎？ ==
 可以的，graceMode完全可以放心使用p2p,  所有p2p流量都不會走VPN，除非你要翻牆的網站本身使用的IP網段也跑p2p了，不過這個機會非常小。
 
-
+== 我如何知道googlecode上面的vpnup.sh有新版本了？ ==
+在自動更新機制出來之前，其實你不需要知道，只要你每日上的網站都能正常訪問，這樣你不更新vpnup.sh也沒問題，萬一有網站無法訪問而你確定是被牆了，這時候你才需要更新vpnup.sh來試試看。
