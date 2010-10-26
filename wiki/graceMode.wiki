@@ -55,13 +55,19 @@ server=/youtube.com/8.8.8.8
 # cd /jffs/openvpn
 # wget http://autoddvpn.googlecode.com/svn/trunk/grace.d/vpnup.sh
 # wget http://autoddvpn.googlecode.com/svn/trunk/grace.d/vpndown.sh
-# wget http://autoddvpn.googlecode.com/svn/trunk/openvpn/jffs/run.sh
 # chmod a+x *.sh
 # nvram set rc_startup='date 20100729; openvpn --config /jffs/openvpn/openvpn.conf --daemon'
 # nvram commit
 }}}
 
 # 接著參考[http://code.google.com/p/autoddvpn/wiki/OpenVPNManualStartUP 這份文件]，准備好你的OpenVPN設置，使其能手動啟動，設置文件放在 /jffs/openvpn/openvpn.conf
+* 注意：如果你的OpenVPN不是手動啟動，而是透過DDWRT web UI來設置，則你需要再下載run.sh，並且使用不同的rc_startup：
+{{{
+# cd /jffs/openvpn/
+# wget http://autoddvpn.googlecode.com/svn/trunk/openvpn/jffs/run.sh
+# nvram set rc_startup='/jffs/openvpn/run.sh'
+}}}
+* 建議你使用手動方式啟動OpenVPN比較好。
 
 最後重新啟動DDWRT即可，啟動之後會產生兩個log
  # /tmp/autoddvpn.log 這是autoddvpn的log
@@ -110,17 +116,11 @@ server=/youtube.com/8.8.8.8
 = 其他議題 =
 
 == 如果有些網站確實被牆了，但是graceMode連不上，我該怎麼辦？ ==
-graceMode裡面所有需要翻牆的IP網段定義在vpnup.sh裡面，這個腳本是我透過gfwList的內容分析自動產生而來的，但仍然有可能會有不盡全面之處，目前唯一能做的是自行修改vpnup.sh裡面的route add內容，先將被牆的網站域名透過nslookup找出實際的IP，然後再用traceroute測試是否這個IP沒有走VPN，最後在DDWRT裡面手動加入
+graceMode裡面所有需要翻牆的IP網段定義在vpnup.sh裡面，這個腳本是我透過gfwList的內容分析自動產生而來的，但仍然有可能會有不盡全面之處，目前唯一能做的是自行定義vpnup_custom內容，先將被牆的網站域名透過nslookup找出實際的IP，然後再用traceroute測試是否這個IP沒有走VPN，最後在DDWRT裡面手動執行
 {{{
 route add -host xxx.xxx.xxx.xxx <your_vpn_gateway>
 }}}
-然後再測試是否可以訪問網站，如果成功了就可以直接修改/jffs裡面的vpnup.sh，這樣下次重開機之後就依然可以訪問這個網站了。
-
-== DDWRT能如同gfwList自動更新IP網段嗎？==
-我正在研究這個部分，不過因為DDWRT裡面沒有svn 沒有curl ，只有自帶一個非常精簡的wget command, 因此要比對SVN上面的版本號再決定是否更新vpnup.sh內容並不容易，如果大家有好的方法歡迎告訴我，目前恐怕只能手動更新了。
-
-== 我可以不直接修改vpnup.sh而是修改自定義的文件嗎？ ==
-可以的，編輯一個custom_vpnup文件，依據自己到情況放到/jffs/openvpn/或/jffs/pptp/下, 裡面定義自己的route add/del內容, vpnup.sh會先載入custom_vpnup的路由規則再載入本身的規則，這樣就如同gfwList一樣可以優先以自己定義的為主了。vpnup_custom設置范例如下：
+然後再測試是否可以訪問網站，如果成功了就可以編輯custom_vpnup文件，依據自己到情況放到/jffs/openvpn/或/jffs/pptp/下，這樣下次重開機之後就依然可以訪問這個網站了。vpnup_custom設置范例如下：
 {{{
 # this script will be executed before loading the routing rules in vpnup.sh
 # Example:
@@ -129,6 +129,12 @@ route add -host xxx.xxx.xxx.xxx <your_vpn_gateway>
 
 route add -host 96.16.157.15 gw $VPNGW
 }}}
+
+== DDWRT能如同gfwList自動更新IP網段嗎？==
+我正在研究這個部分，不過因為DDWRT裡面沒有svn 沒有curl ，只有自帶一個非常精簡的wget command, 因此要比對SVN上面的版本號再決定是否更新vpnup.sh內容並不容易，如果大家有好的方法歡迎告訴我，目前恐怕只能手動更新了。
+
+== 我可以不直接修改vpnup.sh而是修改自定義的文件嗎？ ==
+可以的，如同前面所說的，編輯custom_vpnup文件，依據自己到情況放到/jffs/openvpn/或/jffs/pptp/下, 裡面定義自己的route add/del內容, vpnup.sh會先載入custom_vpnup的路由規則再載入本身的規則，這樣就如同gfwList一樣可以優先以自己定義的為主了。
 
 == 有些網站雖然不需要翻牆，但是走VPN比較快，可以強迫走VPN嗎？ ==
 可以的，如同前面所說的，定義vpnup_custom文件即可。
