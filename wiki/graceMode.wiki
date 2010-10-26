@@ -1,0 +1,21 @@
+= Introduction =
+
+這份文件說明autoddvpn的graceMode運作原理。
+
+= Details =
+
+  * 緣起
+  * 面臨的問題
+  * 解決之道
+
+= 緣起 =
+autoddvpn最早是從[http://code.google.com/p/chnroutes/ chnroutes]的設計所啟蒙而來的，這個國內國外分流的概念後來在國內有很多人開始實做，包括tomato路由器、openwrt路由器甚至商業的威眾路由器，然而國內國外分流這個概念雖然方便，但也面臨了很多問題，autoddvpn不得不思考因應新的網路環境該如何找出更好更舒服的解決方式，graceMode就是在這樣的背景下誕生的想法。
+
+
+= 面臨的問題 =
+國內國外分流面臨的問題很多，例如：
+
+ # 不需要翻牆的國外網站也被迫走VPN了，這樣會嚴重依賴VPN的穩定性
+ # 所有DNS查詢為了避免被劫持，必須使用8.8.8.8 Google DNS或OpenDNS, 這樣一來跟Google DNS之間必須依賴可靠穩定的VPN連線，所有DNS UDP query封包走了很遠的路到DNS查詢使得網頁開啟變慢，萬一VPN斷線則所有查詢都沒有回應連國內網站也上不去，再來就是國內網站的CDN效果完全失效，上海電信的用戶可能會連到北京聯通的服務器，結果一切都亂了
+ # p2p無法使用，或者必須封鎖國外的p2p traffic或者server節點
+
