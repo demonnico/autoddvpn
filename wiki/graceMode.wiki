@@ -102,3 +102,4 @@ server=/youtube.com/8.8.8.8
  # /tmp/autoddvpn.log 這是autoddvpn的log
 
 = 測試 =
+在DDWRT shell裡面 *traceroute www.facebook.com* 看看第一個節點是不是你的VPN private IP節點，也就是你的VPN gateway。同時再測試 *traceroute www.apple.com* 看看第一個節點是不是你的WAN gateway，如果都沒錯那就是成功了！
