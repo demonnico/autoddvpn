@@ -152,4 +152,4 @@ route add -host 96.16.157.15 gw $VPNGW
 請到[http://code.google.com/p/autoddvpn/issues/detail?id=23 這裡]來回報
 
 == 我發現有某個網站的IP沒有被vpnup.sh收錄，我該如何回報？ ==
-為了維護的方便，如果是google facebook twitter youtube yahoo這些網站的相關服務，請到[http://code.google.com/p/autoddvpn/issues/detail?id=25 這裡]回報給我，我會確認之後寫入vpnup.sh裡面，如果是其他網站，建議您[https://autoproxy.org/~jimmy/ap/ 提交到gfwList]，gfwList一旦收入之後，autoddvpn這邊會在短時間內做相應的更新, 在此之前請先自行修改vpnup.sh或vpnup_custom文件內容。
+為了維護的方便，如果是google facebook twitter youtube yahoo這些網站的相關服務，請到[http://code.google.com/p/autoddvpn/issues/detail?id=25 這裡]回報給我，我會確認之後寫入vpnup.sh裡面，如果是其他網站，建議您[https://autoproxy.org/~jimmy/ap/ 提交到gfwList]，gfwList一旦收入之後，autoddvpn這邊會在短時間內做相應的更新, 在此之前請先自行修改vpnup_custom文件內容。
