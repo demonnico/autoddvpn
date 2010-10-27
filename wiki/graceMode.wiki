@@ -54,7 +54,7 @@ server=/youtube.com/8.8.8.8
 }}}
 說明：DNSMasq是DDWRT裡面的一個name cache server, 它可以定義static A RR或者定義某些域名強迫從某個DNS來做解析，上面這個設置范例是先定義好www.facebook.com www.youtube.com 等域名解析結果，對於經常上facebook, youtube and twitter的人會有很大的幫助，同時指定某些容易被DNS劫持的域名例如facebook.com fbcdn.net twitter.com youtube.com等泛域名一律由Google DNS 8.8.8.8來做解析，因為8.8.8.8之後會強迫走VPN，因此不用擔心DNS劫持，除非VPN斷線路由表被清空，這時DNSMasq才有短暫機會可能被污染。
 
-# 接著參考[http://code.google.com/p/autoddvpn/wiki/OpenVPNManualStartUP 這份文件]，准備好你的OpenVPN設置，使其能手動啟動，設置文件放在 /jffs/openvpn/openvpn.conf 
+# 接著參考[http://code.google.com/p/autoddvpn/wiki/OpenVPNManualStartUP 這份文件]，准備好你的OpenVPN設置，使其能手動啟動，設置文件放在 /jffs/openvpn/openvpn.conf ，必須注意的是，設置文件裡面不要設置 * redirect-gateway def1* , 否則會失效。
 
 # 接著ssh進入DDWRT：
 {{{
