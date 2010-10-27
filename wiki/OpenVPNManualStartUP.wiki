@@ -84,3 +84,6 @@ openvpn --config /jffs/openvpn/openvpn.conf --verb 5
 這是打開verbose模式，你可以看到很多執行的output, 來判斷是否運作正常，如果沒問題就可以重開讓它自動執行了。
 
 最後感謝 @jkgtw @yegle 的測試以及回報。
+
+= 其他 =
+如果你是使用yegle openvpn的話，請注意[http://code.google.com/p/autoddvpn/issues/detail?id=30 這個issue]
