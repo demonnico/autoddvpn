@@ -145,6 +145,13 @@ route add -host 96.16.157.15 gw $VPNGW
 == 我可以放心使用P2P嗎？ ==
 可以的，graceMode完全可以放心使用p2p,  所有p2p流量都不會走VPN，除非你要翻牆的網站本身使用的IP網段也跑p2p了，不過這個機會非常小。
 
+== dnsmasq options無法涵蓋所有被污染的域名？ ==
+是的，沒有人知道GFW到底污染了多少域名，如果要維護一個很大的
+dnsmasq options清單是很困難的，有些域名雖然被污染了，但是可能你一年頂多碰到一次。graceMode的缺點是沒辦法全面，只能透過客制化修改dnsmasq options以及vpnup_custom來盡量趨於滿足自己的需求，但優點卻是非常明顯的。如果你非常需要解決DNS污染問題，只能在DDWRT裡面的static DNS設置好google DNS與OpenDNS, 然後如同[http://code.google.com/p/autoddvpn/wiki/DNSMasq 這份文件]最後所描述的，將國內大網站的域名指定本地ISP DNS來解析。也就是整個方式反過來思考，這樣好處是解析內容肯定不會被污染，不管GFW污染了多少域名，然而缺點就是DNS解析會非常依賴VPN穩定，如果VPN暫時斷了或不穩，可能很多不需要翻牆的網站也訪問不了了。
+
+graceMode的設計在於彈性、客制化以及連線速度，缺點是沒辦法全面，同時沒辦法提供很好的自動更新機制，因此自己可以決定怎樣的DNS配置方式最適合自己。
+
+
 == 我如何知道googlecode上面的vpnup.sh有新版本了？ ==
 在自動更新機制出來之前，其實你不需要知道，只要你每日上的網站都能正常訪問，這樣你不更新vpnup.sh也沒問題，萬一有網站無法訪問而你確定是被牆了，這時候你才需要更新vpnup.sh來試試看。
 
