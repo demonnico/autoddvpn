@@ -12,7 +12,7 @@ autoddvpn是從[http://code.google.com/p/chnroutes/ chnroutes]啟發而來的解
 
 = 如何設置 =
 
-autoddvpn目前有傳統模式(classicMode)與優雅模式(graceMode)
+autoddvpn目前有傳統模式(classicMode)與優雅模式(graceMode)，傳統模式裡面實現了最常見的國內國外路由分離，一勞永逸。優雅模式只有需要翻牆的IP才走VPN，對於DNS劫持或P2P應用的支持最好，優雅模式是目前autoddvpn最推薦的設置方式。
 
 == 傳統模式(classicMode) ==
 如果您只有PPTP帳號，請參考[http://code.google.com/p/autoddvpn/wiki/HOWTO 這份HOWTO文件]
