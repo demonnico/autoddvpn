@@ -105,7 +105,7 @@ autoddvpn最早是從[http://code.google.com/p/chnroutes/ chnroutes]的設計所
 == 如果有些網站確實被牆了，但是graceMode連不上，我該怎麼辦？ ==
 graceMode裡面所有需要翻牆的IP網段定義在vpnup.sh裡面，這個腳本是我透過gfwList的內容分析自動產生而來的，但仍然有可能會有不盡全面之處，目前唯一能做的是自行定義vpnup_custom內容，先將被牆的網站域名透過nslookup找出實際的IP，然後再用traceroute測試是否這個IP沒有走VPN，最後在DDWRT裡面手動執行
 {{{
-route add -host xxx.xxx.xxx.xxx <your_vpn_gateway>
+route add -host xxx.xxx.xxx.xxx gw <your_vpn_gateway>
 }}}
 然後再測試是否可以訪問網站，如果成功了就可以編輯custom_vpnup文件，依據自己到情況放到/jffs/openvpn/或/jffs/pptp/下，這樣下次重開機之後就依然可以訪問這個網站了。vpnup_custom設置范例如下：
 {{{
