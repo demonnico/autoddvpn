@@ -16,6 +16,8 @@ autoddvpn是從[http://code.google.com/p/chnroutes/ chnroutes]啟發而來的解
 
 如果您想搭配OpenVPN帳號，請參考[http://code.google.com/p/autoddvpn/wiki/OpenVPNJFFS  這份HOWTO文件]
 
+或者，你也可以直接參考[http://code.google.com/p/autoddvpn/wiki/graceMode graceMode文件]，這是autoddvpn最好的配置方式。
+
 
 = 運作原理 =
 
