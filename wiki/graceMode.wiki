@@ -29,7 +29,7 @@ autoddvpn最早是從[http://code.google.com/p/chnroutes/ chnroutes]的設計所
 = 解決之道 =
 
  # 找出真正需要翻牆的網站所使用的IP網段，只有這些IP網段才走VPN
- # 使用本地DNS(ISP提供的DNS或local DNS), 讓DNS查詢可以非常快速穩定，同時具有CDN加速的優勢，然而對於有劫持風險的域名例如twitter, youtube, facebook等則強迫使用Google DNS, 這樣一來如果VPN不穩導致DNS解析不穩，頂多也只是影響twitter, youtube, facebook等有劫持風險的網站，其他網站完全不用擔心解析問題。
+ # 使用本地DNS(ISP提供的DNS或local DNS), 讓DNS查詢可以非常快速穩定，同時具有CDN加速的優勢，然而對於有劫持風險的域名例如twitter, youtube, facebook等則強迫使用Google DNS, 這樣一來如果VPN不穩導致DNS解析不穩，頂多也只是影響twitter, youtube, facebook等有劫持風險的網站，其他網站完全不用擔心解析問題。(注：事實上本文最後的dnsmasq_options設置方式完全可以避免twitter facebook等劫持風險)
  # p2p可以正常使用，因為你的p2p節點不會在facebook, twitter, youtube這些公司的IDC機房裡面，因此所有p2p流量全部都是直連，包括國外節點，你只需要擔心你的DDWRT路由器CPU內存等硬件配備是否足以支撐即可。
  # 盡量不依賴VPN穩定度，萬一VPN不穩頂多需要翻牆的網站連不上，其余國內網站例如douban或國外網站例如gmail必須訪問正常，不能有任何影響。
 
