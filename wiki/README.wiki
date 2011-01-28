@@ -21,7 +21,7 @@ autoddvpn目前有傳統模式(classicMode)與優雅模式(graceMode)，傳統�
 
 == 優雅模式(graceMode) ==
 
-參考[http://code.google.com/p/autoddvpn/wiki/graceMode graceMode文件]，這是autoddvpn最好的配置方式。
+參考[http://code.google.com/p/autoddvpn/wiki/graceMode graceMode文件]，這是autoddvpn最推薦的配置方式。
 
 
 = 運作原理 =
