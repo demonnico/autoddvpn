@@ -12,7 +12,7 @@ autoddvpn是從[http://code.google.com/p/chnroutes/ chnroutes]啟發而來的解
 
 = 如何設置 =
 
-autoddvpn目前有傳統模式與優雅模式(graceMode)
+autoddvpn目前有傳統模式(classicMode)與優雅模式(graceMode)
 
 == 傳統模式(classicMode) ==
 如果您只有PPTP帳號，請參考[http://code.google.com/p/autoddvpn/wiki/HOWTO 這份HOWTO文件]
