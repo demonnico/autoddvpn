@@ -109,7 +109,7 @@ route add -host xxx.xxx.xxx.xxx gw <your_vpn_gateway>
 }}}
 然後再測試是否可以訪問網站，如果成功了就可以編輯custom_vpnup文件，依據自己到情況放到/jffs/openvpn/或/jffs/pptp/下，這樣下次重開機之後就依然可以訪問這個網站了。vpnup_custom設置范例如下：
 {{{
-# this script will be executed before loading the routing rules in vpnup.sh
+# this script will be executed after loading the routing rules in vpnup.sh
 # Example:
 # route add -host 208.67.222.222 gw $VPNGW
 # route add -net 74.125.0.0/16 gw $VPNGW
