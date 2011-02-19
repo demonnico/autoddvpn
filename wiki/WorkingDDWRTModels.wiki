@@ -1,0 +1,8 @@
+= Introduction =
+
+為了幫助更多朋友買到相容autoddvpn的DDWRT，請大家回報型號給我，並且告訴我：
+
+ # 運行classicMode or graceMode
+ # JFFS or wget 模式
+ # PPTP or OpenVPN
+ # 其他有用的資訊
