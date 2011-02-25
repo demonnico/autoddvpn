@@ -63,7 +63,7 @@ log /tmp/openvpn.log
  * 如果你的openvpn server不需要user authentication, 則auth-user-pass不用寫
  * ping 10 ping-restart 60表示每10秒client ping一次server, 如果60秒都沒有回應就重啟client，如果你對連線比較敏感的話，可以設為ping 5  ping-restart 20
  * 如果openvpn server沒有啟動lzo壓縮傳輸，則comp-lzo不用寫
- * 如果你是是使用[http://code.google.com/p/autoddvpn/wiki/graceMode graceMode], 請務必把 redirect-gateway def1 這行移除，這很重要。此外建議加上 route-nopull,  這樣可以拒絕服務端push過來的路由信息。(see [http://code.google.com/p/autoddvpn/issues/detail?id=14#c14 #14])
+ * 如果你是是使用[http://code.google.com/p/autoddvpn/wiki/graceMode graceMode], 請務必把 redirect-gateway def1 這行移除，這很重要。此外建議加上 route-nopull,  這樣可以拒絕服務端push過來的路由信息，自己維護default gw。(see [http://code.google.com/p/autoddvpn/issues/detail?id=14#c14 #14])
  * 最後一行log寫入/tmp/下，每次重開機會被清空，如果你完全不需要看log，這行可以不用。
 
 修改rc_startup
