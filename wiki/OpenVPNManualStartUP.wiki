@@ -68,7 +68,7 @@ log /tmp/openvpn.log
 
 修改rc_startup
 {{{
-nvram set rc_startup='date 20100729; openvpn --config /jffs/openvpn/openvpn.conf --daemon'
+nvram set rc_startup='date -s "2010-07-29 12:00:00"; openvpn --config /jffs/openvpn/openvpn.conf --daemon'
 }}}
 * 注意：rc_startup修改了時間是為了修正[http://code.google.com/p/autoddvpn/issues/detail?id=14 這個issue], 否則TLS handshaking會fail。
 
