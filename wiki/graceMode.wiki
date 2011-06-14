@@ -51,7 +51,7 @@ autoddvpn最早是從[http://code.google.com/p/chnroutes/ chnroutes]的設計所
 # wget http://autoddvpn.googlecode.com/svn/trunk/grace.d/vpnup.sh
 # wget http://autoddvpn.googlecode.com/svn/trunk/grace.d/vpndown.sh
 # chmod a+x *.sh
-# nvram set rc_startup='date -s "2010-07-29 12:00:00; openvpn --config /jffs/openvpn/openvpn.conf --daemon'
+# nvram set rc_startup='date -s "2010-07-29 12:00:00"; openvpn --config /jffs/openvpn/openvpn.conf --daemon'
 # nvram commit
 }}}
 
