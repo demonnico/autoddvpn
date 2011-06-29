@@ -24,6 +24,8 @@ http://autoddvpn.googlecode.com/files/jffs-1.png
  # 使用了vpn版本
 參考官方說明：http://www.dd-wrt.com/wiki/index.php/Jffs
 
+*注意，如果你DDWRT刷mega版本，svn 13xxx系列的可能會有JFFS問題，建議刷15xxx後期或17xxx(see [http://code.google.com/p/autoddvpn/issues/detail?id=81 bug #81])
+
 webgui啟用jffs的方式要注意順序：
 
  # 進入Administration.
