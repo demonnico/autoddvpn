@@ -7,10 +7,11 @@
 
 = 准備 =
 
- * 在DDWRT裡面 mkdir /jffs/bin/
+ * 在DDWRT裡面建立/jffs/bin/目錄
  * 下載更新腳本到 /jffs/bin/
 
 {{{
+mkdir /jffs/bin/
 cd /jffs/bin/
 wget http://autoddvpn.googlecode.com/svn/trunk/grace.d/autoddvpn_update.sh
 chmod a+x autoddvpn_update.sh
@@ -43,4 +44,3 @@ http://autoddvpn.googlecode.com/files/autoddvpn_update.png
 [INFO] this may take a while to apply new rules
 }}}
 此時autoddvpn會重新套用新的vpnup.sh腳本，需要一些時間才會生效
-
