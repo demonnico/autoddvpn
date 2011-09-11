@@ -34,6 +34,7 @@ mkdir firmware_mod_kit
 {{{
 $ ./extract_firmware.sh firmware.bin working_directory/
 }}}
+* 如果extract_firmware.sh解開有問題，請試試看新的extract-ng.sh and build.sh, 感謝網友提供的反饋(參考[http://code.google.com/p/autoddvpn/issues/detail?id=92 #92])
 
 這時 working_directory/rootfs/裡面就是ddwrt filesystem的root(/)了, 因為ddwrt本身沒有/usr/loca/bin, 所以我們先
 {{{
