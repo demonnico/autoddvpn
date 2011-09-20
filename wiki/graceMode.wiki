@@ -149,7 +149,7 @@ graceMode的設計在於彈性、客制化以及連線速度，缺點是沒辦�
 dnsmasq_options內容
 {{{
 address=/www.facebook.com/66.220.149.25 
-address=/www.youtube.com/72.14.213.190
+address=/www.youtube.com/72.14.203.190
 address=/twitter.com/199.59.148.83
 address=/www.twitter.com/199.59.148.83
 address=/api.twitter.com/199.59.148.87
