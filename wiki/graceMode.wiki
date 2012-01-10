@@ -146,22 +146,4 @@ graceMode的設計在於彈性、客制化以及連線速度，缺點是沒辦�
 如果網址是www開頭打不開，建議您[https://autoproxy.org/~jimmy/ap/ 提交到gfwList]，gfwList一旦收入之後，autoddvpn這邊會在短時間內做相應的更新, 如果網址不是www開頭而打不開，請到[http://code.google.com/p/autoddvpn/issues/detail?id=36 這裡]回報給我，我會確認之後寫入vpnup.sh裡面。
 
 = 備注 =
-dnsmasq_options內容
-{{{
-address=/www.facebook.com/66.220.149.25 
-address=/www.youtube.com/72.14.203.190
-address=/twitter.com/199.59.148.83
-address=/www.twitter.com/199.59.148.83
-address=/api.twitter.com/199.59.148.87
-address=/encrypted.google.com/72.14.203.100
-server=/google.com/8.8.8.8
-server=/facebook.com/8.8.8.8
-server=/fbcdn.net/8.8.8.8
-server=/twitter.com/8.8.8.8
-server=/youtube.com/8.8.8.8
-server=/ytimg.com/8.8.8.8
-server=/imageshack.us/8.8.8.8
-server=/books.com.tw/8.8.8.8
-server=/book.com.tw/8.8.8.8
-
-}}}
+dnsmasq_options最新內容請參考[http://code.google.com/p/autoddvpn/source/browse/trunk/grace.d/dnsmasq_options 這裡]
